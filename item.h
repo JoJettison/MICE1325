@@ -6,8 +6,8 @@ class Item
 {
 	public:
 		string to_string();
-		Item (string Name, string Description, double wholesaleCost, double retailCost, int remainingStock):
-		name(Name), desc(Description), wholeCost(wholesaleCost), retPri(retailCost), remStock(remainingStock){}
+		Item (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock):
+		name(Name), desc(Description), wholeCost(wholesaleCost), retPri(retailPrice), remStock(remainingStock){}
 
 	private:
 		string name;
