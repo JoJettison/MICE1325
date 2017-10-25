@@ -4,15 +4,12 @@
 #include <string>
 using namespace std;
 
-class Scoop: public Item {
-
-public:
-	void to_string();
-	Scoop (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock):
-	Item(Name,Description,wholesaleCost,retailPrice,remainingStock) { }
-
-
-
+class Scoop
+{
+	public:
+		void to_string();
+		//Scoop (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock):
+		//Item(Name,Description,wholesaleCost,retailPrice,remainingStock) { }
 
 };
 #endif

@@ -1,0 +1,26 @@
+MENU BAR DESIGN - BRUNO TECHNOLOGIES
+
+Customer
+	Sign In
+	Create a Serving
+	Create/add to Order
+	Cancel Order
+	Sign Out
+Server
+	Sign In
+	Create a Serving
+	Add to Order
+	Fill an Order
+	Mark Order as Paid
+	Create a Customer
+	Replace Items
+	Sign Out
+Manager
+	Sign In
+	View Reports
+	Add New Container
+	Add New Flavor
+	Add New Topping
+	Hire New Servers
+	Sign Out
+
