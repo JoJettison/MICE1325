@@ -12,3 +12,5 @@ testScoop.o: testScoop.cpp scoop.h
 	$(CXX) $(CXXFLAGS) -c -w testScoop.cpp
 testScoop: testScoop.o scoop.o
 	$(CXX) $(CXXFLAGS) -o testScoop testScoop.o scoop.o
+clean:
+	-rm -f *.o testItem testScoop
