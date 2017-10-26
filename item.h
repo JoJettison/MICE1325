@@ -7,9 +7,9 @@ using namespace std;
 class Item
 {
 	public:
-		void to_string();
 		Item (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock):
 		name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock} { }
+		void to_string();
 
 	protected:
 		string name;

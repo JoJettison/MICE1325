@@ -1,12 +1,12 @@
-#include "item.h"
 #include "scoop.h"
 #include <iostream>
 using namespace std;
 
 int main(){
 
-Scoop straw("Strawberry","A hearty and healthy option", 5, 3, 30);
+Scoop straw("Strawberry","delicious pink creamy goodness", 5.2, 3.1, 30);
 
 straw.to_string();
 
+return 0;
 }
