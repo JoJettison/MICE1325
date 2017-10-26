@@ -12,8 +12,8 @@ class Item
 		name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock} { }
 		void to_string();
 
-		void to_string();
 		
+
 
 	protected:
 		vector<Item> itemList;
