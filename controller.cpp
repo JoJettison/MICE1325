@@ -11,7 +11,7 @@ void Controller::executeCmd(int cmd)
 {
   string Name, Description;
   double wholesaleCost, retailPrice;
-  int remainingStock, maximumScoops;
+  int remainingStock, maximumScoops,style;
   if (cmd==1)
   {
   cout<<"Enter the item's Name"<<endl;
@@ -56,6 +56,9 @@ void Controller::executeCmd(int cmd)
   getline(cin,Name);
   cout<<"Enter the description of the toppings"<<endl;
   getline(cin,Description);
+  cout<<"Enter the topping style 0= light, 1=normal, 2=extra, 3=drenched"<<endl;
+  cin>>style;
+  cin.ignore();
   cout<<"Enter the wholesale cost of the toppings"<<endl;
   cin>>wholesaleCost;
   cin.ignore();
@@ -66,7 +69,7 @@ void Controller::executeCmd(int cmd)
   cin>>remainingStock;
   cin.ignore();
 
-  manager.addToppings(Toppings(Name,Description,wholesaleCost,retailPrice,remainingStock));
+  manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
   }
   if (cmd==4)
   {

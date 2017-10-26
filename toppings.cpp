@@ -6,6 +6,6 @@ using namespace std;
 void Toppings::to_string()
 {
 
-cout<<name <<", "<<desc<<" Cost to purchase: "<<"$"<<wholeCost<< " Sold for "<<"$"<<retPri<< " RemainingStock: "<<remStock<< " units"<<endl;
+cout<<name <<", "<<desc<<style.to_string()<<" Cost to purchase: "<<"$"<<wholeCost<< " Sold for "<<"$"<<retPri<< " RemainingStock: "<<remStock<< " units"<<endl;
 
 }
