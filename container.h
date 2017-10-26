@@ -3,14 +3,16 @@ using namespace std;
 
 class Container
 {
-	public:
-		Container (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock):
-		name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock} { }
-		void to_string();
-	private:
-		string name;
-		string desc;
-		double wholeCost;
-		double retPri;
-		int remStock;
+public:
+	void to_string();
+	Container (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock, int maximumScoops):
+	name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock}, maxScoops{maximumScoops} { }
+private:
+	string name;
+	string desc;
+	double wholeCost;
+	double retPri;
+	int remStock;
+	int maxScoops;
 };
+#endif
