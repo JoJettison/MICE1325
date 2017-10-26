@@ -1,6 +1,7 @@
 #include "item.h"
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 void Item::to_string()
