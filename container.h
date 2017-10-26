@@ -8,9 +8,14 @@ class Container
 {
 public:
 	void to_string();
-	//Container (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock):
-	//Item(Name,Description,wholesaleCost,retailPrice,remainingStock) { }
+	Container (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock, int maximumScoops):
+	name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock}, maxScoops{maximumScoops} { }
 private:
+	string name;
+	string desc;
+	double wholeCost;
+	double retPri;
+	int remStock;
 	int maxScoops;
 };
 #endif

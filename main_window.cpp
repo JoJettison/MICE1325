@@ -1,6 +1,6 @@
 #include "main_window.h"
 
-Main_window::Main_window() {
+Main_window::Main_window(Controller controller):controller(controller) {  //Passing Controller instance into Main_window
 
     // /////////////////
     // G U I   S E T U P
@@ -41,7 +41,7 @@ Main_window::Main_window() {
     // Append New Topping to the Manager menu
     Gtk::MenuItem *menuitem_newTopping = Gtk::manage(new Gtk::MenuItem("_newTopping", true));
     menuitem_newTopping->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_newTopping_click));
-    managemenu->append(*menuitem_newTopping);    
+    managemenu->append(*menuitem_newTopping);
 
 
     // /////////////
@@ -72,18 +72,17 @@ Main_window::~Main_window() { }
 // /////////////////
 
 void Main_window::on_newContainer_click() {
-    //container->take_sticks(1);
+    controller.executeCmd(4);
 }
 
 void Main_window::on_newFlavor_click() {
-    //scoop->take_sticks(2);
+    controller.executeCmd(2);
 }
 
 void Main_window::on_newTopping_click() {
-    //topings->take_sticks(3);
+    controller.executeCmd(3);
 }
 
 /*void Main_window::on_quit_click() {
     hide();
 }*/
-
