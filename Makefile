@@ -5,8 +5,8 @@ all:main_window
 debug: CXXFLAGS += -g
 debug: main_window
 
-main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o
-	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o
+	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 	./mice
 main.o: main.cpp main_window.h
 	$(CXX) $(CXXFLAGS) -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
@@ -45,4 +45,4 @@ testContainer.o: testContainer.cpp container.h item.h
 testContainer: testContainer.o container.o item.o
 	$(CXX) $(CXXFLAGS) -o testContainer testContainer.o container.o item.o
 clean:
-	-rm -f *.o testItem testScoop testContainer testToppings
+	-rm -f *.o testItem testScoop testContainer testToppings mice

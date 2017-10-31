@@ -24,11 +24,9 @@ void Controller::executeCmd(int cmd)
   cout<<"Enter retail price of the item"<<endl;
   cin>>retailPrice;
   cin.ignore();
-  cout<<"Enter how many units of the item are available"<<endl;
-  cin>>remainingStock;
-  cin.ignore();
 
-  manager.addItem(Item(Name,Description,wholesaleCost,retailPrice,remainingStock));
+
+  manager.addItem(Item(Name,Description,wholesaleCost,retailPrice));
   }
 
   if (cmd==2)
@@ -43,16 +41,13 @@ void Controller::executeCmd(int cmd)
   cout<<"Enter retail price of the scoop"<<endl;
   cin>>retailPrice;
   cin.ignore();
-  cout<<"Enter how many scoops are available"<<endl;
-  cin>>remainingStock;
-  cin.ignore();
 
-  manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice,remainingStock));
+  manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice));
   }
 
   if (cmd==3)
   {
-  cout<<"Enter the toppings' Name"<<endl;
+  cout<<"Enter the topping's Name"<<endl;
   getline(cin,Name);
   cout<<"Enter the description of the toppings"<<endl;
   getline(cin,Description);
@@ -65,11 +60,8 @@ void Controller::executeCmd(int cmd)
   cout<<"Enter retail price of the toppings"<<endl;
   cin>>retailPrice;
   cin.ignore();
-  cout<<"Enter how many toppings are available"<<endl;
-  cin>>remainingStock;
-  cin.ignore();
 
-  manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
+  manager.addToppings(Toppings(Name,Description,wholesaleCost,retailPrice,style));
   }
   if (cmd==4)
   {
@@ -83,13 +75,10 @@ void Controller::executeCmd(int cmd)
   cout<<"Enter retail price of the container"<<endl;
   cin>>retailPrice;
   cin.ignore();
-  cout<<"Enter how many containers are available"<<endl;
-  cin>>remainingStock;
-  cin.ignore();
   cout<<"Enter how many scoops the container can hold"<<endl;
   cin>>maximumScoops;
   cin.ignore();
-  manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
+  manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,maximumScoops));
   }
 
 }
