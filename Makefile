@@ -5,14 +5,14 @@ all:main_window
 debug: CXXFLAGS += -g
 debug: main_window
 
-main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o
-	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o
+	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 	./mice
 main.o: main.cpp main_window.h
 	$(CXX) $(CXXFLAGS) -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 main_window.o: main_window.cpp main_window.h
 	$(CXX) $(CXXFLAGS) -c main_window.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
-container.o: container.cpp container.h
+container.o: container.cpp container.h item.h
 	$(CXX) $(CXXFLAGS) -c container.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 manager.o: manager.cpp manager.h
 	$(CXX) $(CXXFLAGS) -c manager.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
@@ -28,17 +28,21 @@ testItem.o: testItem.cpp item.h
 	$(CXX) $(CXXFLAGS) -c -w testItem.cpp
 testItem: testItem.o item.o
 	$(CXX) $(CXXFLAGS) -o testItem testItem.o item.o
-scoop.o: scoop.cpp scoop.h
+scoop.o: scoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c scoop.cpp
-testScoop.o: testScoop.cpp scoop.h
+testScoop.o: testScoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testScoop.cpp
-testScoop: testScoop.o scoop.o
-	$(CXX) $(CXXFLAGS) -o testScoop testScoop.o scoop.o
-toppings.o: toppings.cpp toppings.h
+testScoop: testScoop.o scoop.o item.o
+	$(CXX) $(CXXFLAGS) -o testScoop testScoop.o scoop.o item.o
+toppings.o: toppings.cpp toppings.h item.h
 	$(CXX) $(CXXFLAGS) -c toppings.cpp
-testToppings.o: testToppings.cpp toppings.h
+testToppings.o: testToppings.cpp toppings.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testToppings.cpp
-testToppings: testToppings.o toppings.o
-	$(CXX) $(CXXFLAGS) -o testToppings testToppings.o toppings.o
+testToppings: testToppings.o toppings.o item.o
+	$(CXX) $(CXXFLAGS) -o testToppings testToppings.o toppings.o item.o
+testContainer.o: testContainer.cpp container.h item.h
+	$(CXX) $(CXXFLAGS) -c -w testContainer.cpp
+testContainer: testContainer.o container.o item.o
+	$(CXX) $(CXXFLAGS) -o testContainer testContainer.o container.o item.o
 clean:
-	-rm -f *.o testItem testScoop
+	-rm -f *.o testItem testScoop testContainer testToppings mice
