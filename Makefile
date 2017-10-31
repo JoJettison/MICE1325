@@ -28,12 +28,12 @@ testItem.o: testItem.cpp item.h
 	$(CXX) $(CXXFLAGS) -c -w testItem.cpp
 testItem: testItem.o item.o
 	$(CXX) $(CXXFLAGS) -o testItem testItem.o item.o
-scoop.o: scoop.cpp scoop.h
+scoop.o: scoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c scoop.cpp
-testScoop.o: testScoop.cpp scoop.h
+testScoop.o: testScoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testScoop.cpp
-testScoop: testScoop.o scoop.o
-	$(CXX) $(CXXFLAGS) -o testScoop testScoop.o scoop.o
+testScoop: testScoop.o scoop.o item.o
+	$(CXX) $(CXXFLAGS) -o testScoop testScoop.o scoop.o item.o
 toppings.o: toppings.cpp toppings.h
 	$(CXX) $(CXXFLAGS) -c toppings.cpp
 testToppings.o: testToppings.cpp toppings.h
