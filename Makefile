@@ -34,15 +34,15 @@ testScoop.o: testScoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testScoop.cpp
 testScoop: testScoop.o scoop.o item.o
 	$(CXX) $(CXXFLAGS) -o testScoop testScoop.o scoop.o item.o
-toppings.o: toppings.cpp toppings.h
+toppings.o: toppings.cpp toppings.h item.h
 	$(CXX) $(CXXFLAGS) -c toppings.cpp
-testToppings.o: testToppings.cpp toppings.h
+testToppings.o: testToppings.cpp toppings.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testToppings.cpp
-testToppings: testToppings.o toppings.o
-	$(CXX) $(CXXFLAGS) -o testToppings testToppings.o toppings.o
+testToppings: testToppings.o toppings.o item.o
+	$(CXX) $(CXXFLAGS) -o testToppings testToppings.o toppings.o item.o
 testContainer.o: testContainer.cpp container.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testContainer.cpp
 testContainer: testContainer.o container.o item.o
 	$(CXX) $(CXXFLAGS) -o testContainer testContainer.o container.o item.o
 clean:
-	-rm -f *.o testItem testScoop testContainer
+	-rm -f *.o testItem testScoop testContainer testToppings
