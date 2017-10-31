@@ -28,14 +28,16 @@ testItem.o: testItem.cpp item.h
 	$(CXX) $(CXXFLAGS) -c -w testItem.cpp
 testItem: testItem.o item.o
 	$(CXX) $(CXXFLAGS) -o testItem testItem.o item.o
-scoop.o: scoop.cpp scoop.h item.h
-	$(CXX) $(CXXFLAGS) -c scoop.cpp
+person.o: person.cpp person.h
+	$(CXX) $(CXXFLAGS) -c person.cpp
+testPerson.o: testPerson.cpp person.h
+	$(CXX) $(CXXFLAGS) -c -w testPerson.cpp
+testPerson: testPerson.o person.o
+	$(CXX) $(CXXFLAGS) -o testPerson testPerson.o person.o
 testScoop.o: testScoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testScoop.cpp
 testScoop: testScoop.o scoop.o item.o
 	$(CXX) $(CXXFLAGS) -o testScoop testScoop.o scoop.o item.o
-toppings.o: toppings.cpp toppings.h item.h
-	$(CXX) $(CXXFLAGS) -c toppings.cpp
 testToppings.o: testToppings.cpp toppings.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testToppings.cpp
 testToppings: testToppings.o toppings.o item.o
