@@ -16,12 +16,11 @@ class Main_window : public Gtk::Window
     protected:
         void on_order_click();
         void on_customer_click();
-        void on_item_click();
         void on_server_click();
         void on_servingDis_click();
-        //void on_newContainer_click();
-        //void on_newFlavor_click();
-        //void on_newTopping_click();
+        void on_container_click();
+        void on_flavor_click();
+        void on_topping_click();
         void on_quit_click();
     private:
       Controller controller;

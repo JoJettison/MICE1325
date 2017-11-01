@@ -4,10 +4,10 @@
 #include "item.h"
 using namespace std;
 
-class Toppings : public Item
+class Toppings: public Item
 {
 	public:
-		Toppings (string Name, string Description, double wholesaleCost, double retailPrice, int topStyle);
+		Toppings (string Name, string Description,int topStyle, double wholesaleCost, double retailPrice, int remainingStock);
 		int style();
 		const static int LIGHT =0;
 		const static int NORMAL =1;
@@ -15,7 +15,12 @@ class Toppings : public Item
 		const static int DRENCHED=3;
 		string type() override;
 	private:
-		void  setStyle(int topStyle);
+
+		string name;
+		string desc;
+		double wholeCost;
+		double retPri;
+		int remStock;
 		int tStyle;
 
 };

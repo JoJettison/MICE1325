@@ -4,8 +4,8 @@
 #include <vector>
 using namespace std;
 
-Item::Item (string Name, string Description, double wholesaleCost, double retailPrice):
-name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{0} { }
+Item::Item (string Name, string Description, double wholesaleCost, double retailPrice, int RemainingStock):
+name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{RemainingStock} { }
 
 string Item::type()
 {

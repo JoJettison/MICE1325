@@ -36,9 +36,21 @@ Main_window::Main_window(Controller controller):controller(controller)
     menuitem_customer->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_customer_click));
     createmenu->append(*menuitem_customer);
 
-    Gtk::MenuItem *menuitem_item = Gtk::manage (new Gtk::MenuItem("_Item...", true));
+    /*Gtk::MenuItem *menuitem_item = Gtk::manage (new Gtk::MenuItem("_Item...", true));
     menuitem_item->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_item_click));
-    createmenu->append(*menuitem_item);
+    createmenu->append(*menuitem_item);*/
+
+    Gtk::MenuItem *menuitem_container = Gtk::manage (new Gtk::MenuItem("_Container...", true));
+    menuitem_container->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_container_click));
+    createmenu->append(*menuitem_container);
+
+    Gtk::MenuItem *menuitem_flavor = Gtk::manage (new Gtk::MenuItem("_Flavor...", true));
+    menuitem_flavor->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_flavor_click));
+    createmenu->append(*menuitem_flavor);
+
+    Gtk::MenuItem *menuitem_topping = Gtk::manage (new Gtk::MenuItem("_Topping...", true));
+    menuitem_topping->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_topping_click));
+    createmenu->append(*menuitem_topping);
 
     Gtk::MenuItem *menuitem_server = Gtk::manage (new Gtk::MenuItem("_Sever...", true));
     menuitem_server->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_server_click));
@@ -72,7 +84,7 @@ Main_window::~Main_window() {}
 
 void Main_window::on_quit_click()
 {
-    
+    hide();   
 }
 
 void Main_window::on_order_click()
@@ -85,9 +97,19 @@ void Main_window::on_customer_click()
     
 }
 
-void Main_window::on_item_click()
+void Main_window::on_container_click()
 {
-    
+    controller.executeCmd(4);
+}
+
+void Main_window::on_flavor_click()
+{
+    controller.executeCmd(2);
+}
+
+void Main_window::on_topping_click()
+{
+    controller.executeCmd(3);
 }
 
 void Main_window::on_server_click()
@@ -97,5 +119,5 @@ void Main_window::on_server_click()
 
 void Main_window::on_servingDis_click()
 {
-    
+
 }

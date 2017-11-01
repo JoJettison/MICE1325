@@ -3,17 +3,17 @@
 #include <string>
 using namespace std;
 
-Container::Container(string Name, string Description, double wholesaleCost, double retailPrice, int maximumScoops):
-  Item(Name,Description,wholesaleCost,retailPrice), maxScoops{maximumScoops} { }
+Container::Container(string Name, string Description, double wholesaleCost, double retailPrice,int RemainingStock, int maximumScoops):
+Item(Name,Description,wholesaleCost,retailPrice, RemainingStock),maxScoops{maximumScoops} { }
 
 
- string Container::type()
+string Container::type()
 {
-  return "Container";
+ return "Container";
 }
 
 
 int Container::maximScoops()
 {
-  return maxScoops;
+ return maxScoops;
 }
