@@ -14,10 +14,15 @@ class Main_window : public Gtk::Window
         Main_window(Controller controller);
         virtual ~Main_window();
     protected:
-        void on_newContainer_click();
-        void on_newFlavor_click();
-        void on_newTopping_click();
-        void on_quitClick();
+        void on_order_click();
+        void on_customer_click();
+        void on_item_click();
+        void on_server_click();
+        void on_servingDis_click();
+        //void on_newContainer_click();
+        //void on_newFlavor_click();
+        //void on_newTopping_click();
+        void on_quit_click();
     private:
       Controller controller;
 };
