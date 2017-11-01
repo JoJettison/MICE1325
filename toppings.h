@@ -4,7 +4,7 @@
 #include "item.h"
 using namespace std;
 
-class Toppings : public Item
+class Toppings: public Item
 {
 	public:
 		Toppings (string Name, string Description,int topStyle, double wholesaleCost, double retailPrice, int remainingStock);

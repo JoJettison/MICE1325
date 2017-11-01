@@ -7,13 +7,13 @@ Container::Container(string Name, string Description, double wholesaleCost, doub
 Item(Name,Description,wholesaleCost,retailPrice, RemainingStock),maxScoops{maximumScoops} { }
 
 
- string Container::type()
+string Container::type()
 {
-  return "Container";
+ return "Container";
 }
 
 
 int Container::maximScoops()
 {
-  return maxScoops;
+ return maxScoops;
 }

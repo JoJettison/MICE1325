@@ -1,7 +1,6 @@
 #include "toppings.h"
 #include <iostream>
 #include <string>
-#include <stdexcept>
 using namespace std;
 
 Toppings::Toppings(string Name, string Description,int topStyle, double wholesaleCost, double retailPrice, int remainingStock):
