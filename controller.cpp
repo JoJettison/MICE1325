@@ -5,7 +5,7 @@ void Controller::executeCmd(int cmd)
   string Name, Description;
   double wholesaleCost, retailPrice;
   int remainingStock, maximumScoops,style;
-  if (cmd==1)
+  if (cmd==1)                               //Add Item
   {
   cout<<"Enter the item's Name"<<endl;
   getline(cin,Name);
@@ -24,7 +24,7 @@ void Controller::executeCmd(int cmd)
   manager.addItem(Item(Name,Description,wholesaleCost,retailPrice,remainingStock));
   }
 
-  if (cmd==2)
+  if (cmd==2)                                     //Add Flavor
   {
 
     string name, description, a, b, c;
@@ -120,7 +120,7 @@ void Controller::executeCmd(int cmd)
     manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice,remainingStock));
   }
 
-  if (cmd==3)
+  if (cmd==3)                                     //Add Topping
   {
 
     string name, description, a, b, c;
@@ -214,7 +214,7 @@ void Controller::executeCmd(int cmd)
 
     manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
   }
-  if (cmd==4)
+  if (cmd==4)                                 //Add container
   {
 
     string name, description, a, b, c, d;
@@ -322,6 +322,15 @@ void Controller::executeCmd(int cmd)
     dd >> maximumScoops;
 
     manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
+  }
+
+  if(cmd==5)                        //Add Server
+  {
+    Server serves;
+    
+
+
+
   }
 
 }
