@@ -3,17 +3,9 @@
 #include <string>
 using namespace std;
 
-Container::Container(string Name, string Description, double wholesaleCost, double retailPrice, int maximumScoops):
-  Item(Name,Description,wholesaleCost,retailPrice), maxScoops{maximumScoops} { }
-
-
- string Container::type()
+void Container::to_string()
 {
-  return "Container";
-}
 
+cout<<name <<", "<<desc<<" Cost to purchase: "<<"$"<<wholeCost<< " Sold for "<<"$"<<retPri<< " RemainingStock: "<<remStock<< " units"<<endl;
 
-int Container::maximScoops()
-{
-  return maxScoops;
 }
