@@ -8,7 +8,7 @@ using namespace std;
 class Item
 {
 	public:
-		Item (string Name, string Description, double wholesaleCost, double retailPrice);
+		Item (string Name, string Description, double wholesaleCost, double retailPrice, int RemainingStock);
 		void restock(int restock=25);
 		void consume(int quantity=1);
 		virtual string type();

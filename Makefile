@@ -4,10 +4,10 @@ all:main_window
 
 debug: CXXFLAGS += -g
 debug: main_window
-main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o
-	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o item.o
+	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o item.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 	./mice
-main.o: main.cpp main_window.h 
+main.o: main.cpp main_window.h
 	$(CXX) $(CXXFLAGS) -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 main_window.o: main_window.cpp main_window.h
 	$(CXX) $(CXXFLAGS) -c main_window.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
@@ -16,7 +16,7 @@ container.o: container.cpp container.h item.h
 manager.o: manager.cpp manager.h
 	$(CXX) $(CXXFLAGS) -c manager.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 controller.o: controller.cpp controller.h
-		$(CXX) $(CXXFLAGS) -c controller.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+	$(CXX) $(CXXFLAGS) -c controller.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 scoop.o: scoop.cpp scoop.h
 	$(CXX) $(CXXFLAGS) -c scoop.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 toppings.o: toppings.cpp toppings.h *.h

@@ -19,7 +19,7 @@ void Controller::executeCmd(int cmd)
   cin.ignore();
 
 
-  manager.addItem(Item(Name,Description,wholesaleCost,retailPrice));
+  manager.addItem(Item(Name,Description,wholesaleCost,retailPrice,remainingStock));
   }
 
   if (cmd==2)
@@ -61,7 +61,7 @@ void Controller::executeCmd(int cmd)
     bb >> retailPrice;
     stringstream cc(c);
     cc >> remainingStock;
-  
+
     manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
   }
   if (cmd==4)

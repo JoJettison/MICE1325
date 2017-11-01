@@ -7,7 +7,7 @@ using namespace std;
 class Container : public Item
 {
 public:
-	Container (string Name, string Description, double wholesaleCost, double retailPrice, int maximumScoops);
+	Container (string Name, string Description, double wholesaleCost, double retailPrice,int RemainingStock, int maximumScoops);
 	string type() override;
 	int maximScoops();
 private:

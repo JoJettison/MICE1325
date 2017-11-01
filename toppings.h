@@ -7,7 +7,7 @@ using namespace std;
 class Toppings : public Item
 {
 	public:
-		Toppings (string Name, string Description, double wholesaleCost, double retailPrice, int topStyle);
+		Toppings (string Name, string Description,int topStyle, double wholesaleCost, double retailPrice, int remainingStock);
 		int style();
 		const static int LIGHT =0;
 		const static int NORMAL =1;

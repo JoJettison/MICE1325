@@ -8,9 +8,9 @@ using namespace std;
 class Scoop : public Item
 {
 	public:
-		Scoop (string Name, string Description, double wholesaleCost, double retailPrice);
+		Scoop (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock);
 		string type() override;
-		
+
 
 };
 #endif
