@@ -1,22 +1,23 @@
 #ifndef TOPPINGS_H
 #define TOPPINGS_H
 #include <iostream>
-#include "item.h"
+#include "style.h"
 using namespace std;
 
-class Toppings : public Item
+class Toppings
 {
 	public:
-		Toppings (string Name, string Description, double wholesaleCost, double retailPrice, int topStyle);
-		int style();
-		const static int LIGHT =0;
-		const static int NORMAL =1;
-		const static int EXTRA =2;
-		const static int DRENCHED=3;
-		string type() override;
+		Toppings (string Name, string Description, Style a_style, double wholesaleCost, double retailPrice, int remainingStock):
+		name{Name}, desc{Description}, style{a_style}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock} { }
+		void to_string();
 	private:
-		void  setStyle(int topStyle);
-		int tStyle;
+
+		string name;
+		string desc;
+		double wholeCost;
+		double retPri;
+		int remStock;
+		Style style;
 
 };
 #endif
