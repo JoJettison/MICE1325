@@ -1,11 +1,27 @@
 #include "toppings.h"
 #include <iostream>
 #include <string>
+#include <stdexcept>
 using namespace std;
 
-void Toppings::to_string()
+Toppings::Toppings(string Name, string Description, double wholesaleCost, double retailPrice, int topStyle):
+Item(Name,Description,wholesaleCost,retailPrice), tStyle{topStyle} { }
+
+string Toppings::type()
 {
+  return "Toppings";
+}
 
-cout<<name <<", "<<desc<<style.to_string()<<" Cost to purchase: "<<"$"<<wholeCost<< " Sold for "<<"$"<<retPri<< " RemainingStock: "<<remStock<< " units"<<endl;
+int Toppings::style()
+{
+  return tStyle;
+}
 
+void Toppings::setStyle(int topStyle)
+{
+  if(0 < tStyle && tStyle<5)
+  {
+    tStyle= topStyle;
+  }
+  else throw std::runtime_error("Invalid topping style");
 }

@@ -2,20 +2,15 @@
 #define SCOOP_H
 #include <iostream>
 #include <string>
+#include "item.h"
 using namespace std;
 
-class Scoop
+class Scoop : public Item
 {
 	public:
-		void to_string();
-		Scoop (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock):
-		name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock} { }
+		Scoop (string Name, string Description, double wholesaleCost, double retailPrice);
+		string type() override;
+		
 
-	private:
-		string name;
-		string desc;
-		double wholeCost;
-		double retPri;
-		int remStock;
 };
 #endif

@@ -17,11 +17,9 @@ void Controller::executeCmd(int cmd)
   cout<<"Enter retail price of the item"<<endl;
   cin>>retailPrice;
   cin.ignore();
-  cout<<"Enter how many units of the item are available"<<endl;
-  cin>>remainingStock;
-  cin.ignore();
 
-  manager.addItem(Item(Name,Description,wholesaleCost,retailPrice,remainingStock));
+
+  manager.addItem(Item(Name,Description,wholesaleCost,retailPrice));
   }
 
   if (cmd==2)
@@ -43,6 +41,7 @@ void Controller::executeCmd(int cmd)
     cc >> remainingStock;
 
     manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice,remainingStock));
+
   }
 
   if (cmd==3)
@@ -88,5 +87,4 @@ void Controller::executeCmd(int cmd)
 
     manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
   }
-
 }
