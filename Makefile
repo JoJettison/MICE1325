@@ -17,7 +17,7 @@ manager.o: manager.cpp manager.h
 	$(CXX) $(CXXFLAGS) -c manager.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 controller.o: controller.cpp controller.h
 	$(CXX) $(CXXFLAGS) -c controller.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
-scoop.o: scoop.cpp scoop.h
+scoop.o: scoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c scoop.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 toppings.o: toppings.cpp toppings.h *.h
 	$(CXX) $(CXXFLAGS) -c toppings.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
