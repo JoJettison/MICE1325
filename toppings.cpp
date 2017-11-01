@@ -8,19 +8,6 @@ Item(Name,Description,wholesaleCost,retailPrice, remainingStock), tStyle{topStyl
 
 string Toppings::type()
 {
-  return "Toppings";
-}
+  return "Topping";
 
-int Toppings::style()
-{
-  return tStyle;
-}
-
-void Toppings::setStyle(int topStyle)
-{
-  if(0 < tStyle && tStyle<5)
-  {
-    tStyle= topStyle;
-  }
-  else throw std::runtime_error("Invalid topping style");
 }

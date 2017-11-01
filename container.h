@@ -4,14 +4,19 @@
 #include "item.h"
 using namespace std;
 
-class Container : public Item
+class Container: public Item
 {
 public:
 	Container (string Name, string Description, double wholesaleCost, double retailPrice,int RemainingStock, int maximumScoops);
 	string type() override;
 	int maximScoops();
-	
+
 private:
+	string name;
+	string desc;
+	double wholeCost;
+	double retPri;
+	int remStock;
 	int maxScoops;
 };
 #endif

@@ -42,7 +42,7 @@ Main_window::Main_window(Controller controller):controller(controller)
 
     Gtk::MenuItem *menuitem_container = Gtk::manage (new Gtk::MenuItem("_Container...", true));
     menuitem_container->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_container_click));
-    createmenu->append(*menuitem_customer);
+    createmenu->append(*menuitem_container);
 
     Gtk::MenuItem *menuitem_flavor = Gtk::manage (new Gtk::MenuItem("_Flavor...", true));
     menuitem_flavor->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_flavor_click));

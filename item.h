@@ -20,13 +20,15 @@ class Item
 
 		void to_string();
 
-	private:
+
+
+
+	protected:
 		vector<Item> itemList;
 		string name;
 		string desc;
 		double wholeCost;
 		double retPri;
 		int remStock;
-		//Gtk::Image picture
 };
 #endif

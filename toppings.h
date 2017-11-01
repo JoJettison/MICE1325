@@ -15,7 +15,12 @@ class Toppings: public Item
 		const static int DRENCHED=3;
 		string type() override;
 	private:
-		void  setStyle(int topStyle);
+
+		string name;
+		string desc;
+		double wholeCost;
+		double retPri;
+		int remStock;
 		int tStyle;
 
 };
