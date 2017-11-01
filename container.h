@@ -10,6 +10,7 @@ public:
 	Container (string Name, string Description, double wholesaleCost, double retailPrice,int RemainingStock, int maximumScoops);
 	string type() override;
 	int maximScoops();
+	
 private:
 	int maxScoops;
 };
