@@ -28,6 +28,12 @@ testItem.o: testItem.cpp item.h
 	$(CXX) $(CXXFLAGS) -c -w testItem.cpp
 testItem: testItem.o item.o
 	$(CXX) $(CXXFLAGS) -o testItem testItem.o item.o
+serving.o: serving.cpp serving.h
+	$(CXX) $(CXXFLAGS) -c serving.cpp
+testServing.o: testServing.cpp serving.h
+	$(CXX) $(CXXFLAGS) -c -w testServing.cpp
+testServing: testServing.o serving.o item.o toppings.o scoop.o container.o
+	$(CXX) $(CXXFLAGS) -o testServing testServing.o serving.o scoop.o container.o toppings.o item.o
 person.o: person.cpp person.h
 	$(CXX) $(CXXFLAGS) -c person.cpp
 testPerson.o: testPerson.cpp person.h
@@ -47,4 +53,4 @@ testContainer.o: testContainer.cpp container.h item.h
 testContainer: testContainer.o container.o item.o
 	$(CXX) $(CXXFLAGS) -o testContainer testContainer.o container.o item.o
 clean:
-	-rm -f *.o testItem testScoop testContainer testToppings mice
+	-rm -f *.o testItem testScoop testContainer testToppings testServing mice
