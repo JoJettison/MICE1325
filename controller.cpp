@@ -1,11 +1,4 @@
 #include "controller.h"
-#include "item.h"
-#include "scoop.h"
-#include "container.h"
-#include "toppings.h"
-#include "manager.h"
-#include <iostream>
-#include <string>
 
 void Controller::executeCmd(int cmd)
 {
@@ -31,54 +24,67 @@ void Controller::executeCmd(int cmd)
 
   if (cmd==2)
   {
-  cout<<"Enter the Scoop's Name"<<endl;
-  getline(cin,Name);
-  cout<<"Enter the description of the scoop"<<endl;
-  getline(cin,Description);
-  cout<<"Enter the wholesale cost of the scoop"<<endl;
-  cin>>wholesaleCost;
-  cin.ignore();
-  cout<<"Enter retail price of the scoop"<<endl;
-  cin>>retailPrice;
-  cin.ignore();
+    string name, description, a, b, c;
+    double wholesaleCost, retailPrice;
+    int remainingStock;
 
-  manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice));
+    name = Dialogs::input("Name?");
+    description = Dialogs::input("Description?");
+    a = Dialogs::input("Whole Sale Cost?");
+    b = Dialogs::input("Retail Price?");
+    c = Dialogs::input("How many scoops are available?");
+    stringstream aa(a);
+    aa >> wholesaleCost;
+    stringstream bb(b);
+    bb >> retailPrice;
+    stringstream cc(c);
+    cc >> remainingStock;
+
+    manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice,remainingStock));
+
   }
 
   if (cmd==3)
   {
-  cout<<"Enter the topping's Name"<<endl;
-  getline(cin,Name);
-  cout<<"Enter the description of the toppings"<<endl;
-  getline(cin,Description);
-  cout<<"Enter the topping style 0= light, 1=normal, 2=extra, 3=drenched"<<endl;
-  cin>>style;
-  cin.ignore();
-  cout<<"Enter the wholesale cost of the toppings"<<endl;
-  cin>>wholesaleCost;
-  cin.ignore();
-  cout<<"Enter retail price of the toppings"<<endl;
-  cin>>retailPrice;
-  cin.ignore();
+    string name, description, a, b, c;
+    double wholesaleCost, retailPrice;
+    int remainingStock;
 
-  manager.addToppings(Toppings(Name,Description,wholesaleCost,retailPrice,style));
+    name = Dialogs::input("Name?");
+    description = Dialogs::input("Description?");
+    a = Dialogs::input("Whole Sale Cost?");
+    b = Dialogs::input("Retail Price?");
+    c = Dialogs::input("How many toppings are available?");
+    stringstream aa(a);
+    aa >> wholesaleCost;
+    stringstream bb(b);
+    bb >> retailPrice;
+    stringstream cc(c);
+    cc >> remainingStock;
+  
+    manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
   }
   if (cmd==4)
   {
-  cout<<"Enter the container's Name"<<endl;
-  getline(cin,Name);
-  cout<<"Enter the description of the container"<<endl;
-  getline(cin,Description);
-  cout<<"Enter the wholesale cost of the container"<<endl;
-  cin>>wholesaleCost;
-  cin.ignore();
-  cout<<"Enter retail price of the container"<<endl;
-  cin>>retailPrice;
-  cin.ignore();
-  cout<<"Enter how many scoops the container can hold"<<endl;
-  cin>>maximumScoops;
-  cin.ignore();
-  manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,maximumScoops));
-  }
+    string name, description, a, b, c, d;
+    double wholesaleCost, retailPrice;
+    int remainingStock, maximumScoops;
 
+    name = Dialogs::input("Name?");
+    description = Dialogs::input("Description?");
+    a = Dialogs::input("Whole Sale Cost?");
+    b = Dialogs::input("Retail Price?");
+    c = Dialogs::input("How many containers are available?");
+    d = Dialogs::input("How many scoops can the container hold?");
+    stringstream aa(a);
+    aa >> wholesaleCost;
+    stringstream bb(b);
+    bb >> retailPrice;
+    stringstream cc(c);
+    cc >> remainingStock;
+    stringstream dd(d);
+    dd >> maximumScoops;
+
+    manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
+  }
 }
