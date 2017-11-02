@@ -114,7 +114,7 @@ void Main_window::on_topping_click()
 
 void Main_window::on_server_click()
 {
-    
+    controller.executeCmd(7);   
 }
 
 void Main_window::on_servingDis_click()
