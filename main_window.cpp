@@ -52,7 +52,7 @@ Main_window::Main_window(Controller controller):controller(controller)
     menuitem_topping->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_topping_click));
     createmenu->append(*menuitem_topping);
 
-    Gtk::MenuItem *menuitem_server = Gtk::manage (new Gtk::MenuItem("_Sever...", true));
+    Gtk::MenuItem *menuitem_server = Gtk::manage (new Gtk::MenuItem("_Server...", true));
     menuitem_server->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_server_click));
     createmenu->append(*menuitem_server);
 
@@ -94,7 +94,7 @@ void Main_window::on_order_click()
 
 void Main_window::on_customer_click()
 {
-    
+    controller.executeCmd(6);    
 }
 
 void Main_window::on_container_click()

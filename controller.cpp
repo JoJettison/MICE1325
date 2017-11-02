@@ -324,4 +324,65 @@ void Controller::executeCmd(int cmd)
     manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
   }
 
+  if (cmd == 6)
+  {
+
+    string name, phoneNum, a;
+    int ID;
+
+    Gtk::Dialog *dialog = new Gtk::Dialog();
+    dialog->set_title("Create Customer");
+
+    // NAME
+    Gtk::HBox b_name;
+
+    Gtk::Label l_name{"Name:"};
+    l_name.set_width_chars(15);
+    b_name.pack_start(l_name, Gtk::PACK_SHRINK);
+
+    Gtk::Entry e_name;
+    e_name.set_max_length(50);
+    b_name.pack_start(e_name, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);
+
+    // PHONE NUMBER
+    Gtk::HBox b_phoneNum;
+
+    Gtk::Label l_phoneNum{"Phone Number:"};
+    l_phoneNum.set_width_chars(15);
+    b_phoneNum.pack_start(l_phoneNum, Gtk::PACK_SHRINK);
+
+    Gtk::Entry e_phoneNum;
+    e_phoneNum.set_max_length(50);
+    b_phoneNum.pack_start(e_phoneNum, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_phoneNum, Gtk::PACK_SHRINK);
+
+    // ID
+    Gtk::HBox b_ID;
+
+    Gtk::Label l_ID{"ID:"};
+    l_ID.set_width_chars(15);
+    b_ID.pack_start(l_ID, Gtk::PACK_SHRINK);
+
+    Gtk::Entry e_ID;
+    e_ID.set_max_length(50);
+    b_ID.pack_start(e_ID, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_ID, Gtk::PACK_SHRINK);
+
+    // Show dialog
+    dialog->add_button("Cancel", 0);
+    dialog->add_button("OK", 1);
+    dialog->show_all();
+    int result = dialog->run();
+
+    dialog->close();
+
+    name = e_name.get_text();
+    phoneNum = e_phoneNum.get_text();
+    a = e_ID.get_text();
+
+    stringstream aa(a);
+    aa >> ID;    
+  }
+
 }
