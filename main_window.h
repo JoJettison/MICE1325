@@ -15,6 +15,7 @@ class Main_window : public Gtk::Window
         virtual ~Main_window();
     protected:
         void on_order_click();
+        void on_serving_click();
         void on_customer_click();
         void on_server_click();
         void on_servingDis_click();

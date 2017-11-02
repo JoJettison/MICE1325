@@ -324,6 +324,33 @@ void Controller::executeCmd(int cmd)
     manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
   }
 
+  if (cmd == 5)
+  {
+    string orderID, servings, server, customer;
+
+    Gtk::Dialog *dialog = new Gtk::Dialog();
+    dialog->set_title("Create Order"); 
+
+    // ORDER ID
+    Gtk::HBox b_name;
+
+    Gtk::Label l_name{"Order ID:"};
+    l_name.set_width_chars(15);
+    b_name.pack_start(l_name, Gtk::PACK_SHRINK);
+
+    Gtk::Entry e_name;
+    e_name.set_max_length(50);
+    b_name.pack_start(e_name, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);   
+
+    dialog->add_button("Cancel", 0);
+    dialog->add_button("OK", 1);
+    dialog->show_all();
+    int result = dialog->run();
+
+dialog->close();     
+  }
+
   if (cmd == 6)
   {
 
@@ -445,4 +472,111 @@ void Controller::executeCmd(int cmd)
     aa >> ID;     
   }
 
+if (cmd == 8)
+{
+    string container, flavor, topping, toppingQuantity, phoneNum, orderID;
+
+    Gtk::Dialog *dialog = new Gtk::Dialog();
+    dialog->set_title("Create Serving");
+
+    Gtk::HBox b_container;
+
+    Gtk::Label l_container{"Container:"};
+    l_container.set_width_chars(15);
+    b_container.pack_start(l_container, Gtk::PACK_SHRINK);
+
+    Gtk::ComboBoxText c_container;
+    c_container.set_size_request(160);
+    c_container.append("Waffle Cone");
+    c_container.append("Cup");
+    b_container.pack_start(c_container, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_container, Gtk::PACK_SHRINK);
+
+    Gtk::HBox b_flavor;
+
+    Gtk::Label l_flavor{"Flavor:"};
+    l_flavor.set_width_chars(15);
+    b_flavor.pack_start(l_flavor, Gtk::PACK_SHRINK);
+
+    Gtk::ComboBoxText c_flavor;
+    c_flavor.set_size_request(160);
+    c_flavor.append("Chocolate");
+    c_flavor.append("Vanilla");
+    b_flavor.pack_start(c_flavor, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_flavor, Gtk::PACK_SHRINK);
+
+    Gtk::HBox b_topping;
+
+    Gtk::Label l_topping{"Topping:"};
+    l_topping.set_width_chars(15);
+    b_topping.pack_start(l_topping, Gtk::PACK_SHRINK);
+
+    Gtk::ComboBoxText c_topping;
+    c_topping.set_size_request(160);
+    c_topping.append("Sprinkles");
+    c_topping.append("Syrup");
+    b_topping.pack_start(c_topping, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_topping, Gtk::PACK_SHRINK);
+
+    Gtk::HBox b_quantity;
+
+    Gtk::Label l_quantity{"Topping Quantity:"};
+    l_quantity.set_width_chars(15);
+    b_quantity.pack_start(l_quantity, Gtk::PACK_SHRINK);
+
+    Gtk::ComboBoxText c_quantity;
+    c_quantity.set_size_request(160);
+    c_quantity.append("None");
+    c_quantity.append("Light");
+    c_quantity.append("Normal");
+    c_quantity.append("Extra");
+    c_quantity.append("Drenched");
+    b_quantity.pack_start(c_quantity, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_quantity, Gtk::PACK_SHRINK);
+
+    Gtk::HBox b_phoneNum;
+
+    Gtk::Label l_phoneNum{"Customer's Phone Number:"};
+    l_phoneNum.set_width_chars(15);
+    b_phoneNum.pack_start(l_phoneNum, Gtk::PACK_SHRINK);    
+
+    Gtk::Entry e_phoneNum;
+    e_phoneNum.set_max_length(50);
+    b_phoneNum.pack_start(e_phoneNum, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_phoneNum, Gtk::PACK_SHRINK);     
+
+    Gtk::HBox b_orderID;
+
+    Gtk::Label l_orderID{"ID for the Order:"};
+    l_orderID.set_width_chars(15);
+    b_orderID.pack_start(l_orderID, Gtk::PACK_SHRINK);    
+
+    Gtk::Entry e_orderID;
+    e_orderID.set_max_length(50);
+    b_orderID.pack_start(e_orderID, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_orderID, Gtk::PACK_SHRINK);       
+
+    dialog->add_button("Cancel", 0);
+    dialog->add_button("OK", 1);
+    dialog->show_all();
+    int result = dialog->run();
+
+    dialog->close();     
+    }  
+
+    if (cmd == 9)
+    {
+    string container, flavor, topping, toppingQuantity, phoneNum, orderID;
+
+    Gtk::Dialog *dialog = new Gtk::Dialog();
+    dialog->set_title("Display Serving");       
+
+    dialog->add_button("Cancel", 0);
+    dialog->add_button("OK", 1);
+    dialog->show_all();
+    int result = dialog->run();
+
+    dialog->close(); 
+    }
 }
+
