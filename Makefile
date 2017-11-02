@@ -44,4 +44,4 @@ dialogs.o: dialogs.cpp *.h
 person.o: person.cpp *.h
 	$(CXX) $(CXXFLAGS) -c person.cpp
 clean:
-	-rm -f *.o testItem testScoop
+	-rm -f *.o testItem testScoop testContainer testToppings testServing mice
