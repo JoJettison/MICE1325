@@ -2,7 +2,6 @@
 #define MAIN_WINDOW_H
 
 #include <gtkmm.h>
-#include "item.h"
 #include "container.h"
 #include "scoop.h"
 #include "toppings.h"
@@ -15,6 +14,7 @@ class Main_window : public Gtk::Window
         Main_window(Controller controller);
         virtual ~Main_window();
     protected:
+        void on_serving_click();
         void on_order_click();
         void on_customer_click();
         void on_server_click();

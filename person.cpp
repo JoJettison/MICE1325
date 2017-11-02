@@ -34,9 +34,12 @@ int Person::idcode()
 string Person::phone()
 {
   return pnum;
+
 }
 
 string Person::pType()
 {
   return "Person";
+}
+
 }
