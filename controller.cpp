@@ -326,7 +326,6 @@ void Controller::executeCmd(int cmd)
 
   if (cmd == 6)
   {
-    cout << "The fuck dude. controller";
 
     string name, phoneNum, a;
     int ID;

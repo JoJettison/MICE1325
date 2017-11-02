@@ -94,7 +94,6 @@ void Main_window::on_order_click()
 
 void Main_window::on_customer_click()
 {
-    cout << "The fuck dude main_window\n" << endl;
     controller.executeCmd(6);    
 }
 
