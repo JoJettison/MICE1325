@@ -13,6 +13,8 @@ class Server :public Person
     double currentSal();
     void fill();
     void replenishSup();
+    string pType() override;
+    
 
   private:
     int orders;

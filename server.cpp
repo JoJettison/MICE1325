@@ -22,3 +22,8 @@ void Server::fill()
   orders+=1;
 
 }
+
+string Server::pType()
+{
+  return "Server";
+}
