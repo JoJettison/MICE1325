@@ -4,8 +4,8 @@ all:main_window
 
 debug: CXXFLAGS += -g
 debug: main_window
-main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o
-	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o 
+	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 	./mice
 main.o: main.cpp main_window.h 
 	$(CXX) $(CXXFLAGS) -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
@@ -41,5 +41,7 @@ testToppings: testToppings.o toppings.o
 	$(CXX) $(CXXFLAGS) -o testToppings testToppings.o toppings.o
 dialogs.o: dialogs.cpp *.h
 	$(CXX) $(CXXFLAGS) -c dialogs.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+person.o: person.cpp *.h
+	$(CXX) $(CXXFLAGS) -c person.cpp
 clean:
 	-rm -f *.o testItem testScoop

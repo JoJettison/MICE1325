@@ -28,6 +28,10 @@ Main_window::Main_window(Controller controller):controller(controller)
     Gtk::Menu *createmenu = Gtk::manage(new Gtk::Menu());
     menuitem_create->set_submenu(*createmenu);
 
+    Gtk::MenuItem *menuitem_serving = Gtk::manage(new Gtk::MenuItem("_Serving...", true));
+    menuitem_serving->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_serving_click));
+    createmenu->append(*menuitem_serving);
+
     Gtk::MenuItem *menuitem_order = Gtk::manage(new Gtk::MenuItem("_Order...", true));
     menuitem_order->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_order_click));
     createmenu->append(*menuitem_order);
@@ -87,14 +91,19 @@ void Main_window::on_quit_click()
     hide();   
 }
 
+void Main_window::on_serving_click()
+{
+    controller.executeCmd(8);
+}
+
 void Main_window::on_order_click()
 {
-    
+    controller.executeCmd(5);  
 }
 
 void Main_window::on_customer_click()
 {
-    
+    //controller.executeCmd(6);    
 }
 
 void Main_window::on_container_click()
@@ -114,10 +123,10 @@ void Main_window::on_topping_click()
 
 void Main_window::on_server_click()
 {
-    
+    //controller.executeCmd(7);    
 }
 
 void Main_window::on_servingDis_click()
 {
-
+    //controller.executeCmd(9);
 }

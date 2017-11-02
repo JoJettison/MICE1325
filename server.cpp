@@ -2,9 +2,9 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
+using namepace std;
 
-Server::Server( string Name, int IDcode, string phoneNum):
+Server::Server( string Name, int IDcode, string phoneNum,):
 Person(Name,IDcode,phoneNum), orders{0}, salary{7.25} { }
 
 int Server::ordersFilled()
@@ -17,8 +17,7 @@ double Server::currentSal()
   return salary;
 }
 
-void Server::fill()
+int fill()
 {
-  orders+=1;
-
+  
 }
