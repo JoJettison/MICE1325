@@ -1,16 +1,14 @@
 #ifndef CONTAINER_H
 #define CONTAINER_H
 #include <iostream>
-#include "item.h"
 using namespace std;
 
-class Container: public Item
+class Container
 {
 public:
-	Container (string Name, string Description, double wholesaleCost, double retailPrice,int RemainingStock, int maximumScoops);
-	string type() override;
-	int maximScoops();
-
+	void to_string();
+	Container (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock, int maximumScoops):
+	name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock}, maxScoops{maximumScoops} { }
 private:
 	string name;
 	string desc;

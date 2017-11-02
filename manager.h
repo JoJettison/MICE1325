@@ -4,7 +4,6 @@
 #include"scoop.h"
 #include"toppings.h"
 #include"container.h"
-#include "server.h"
 
 #include <vector>
 #include<string>
@@ -18,13 +17,11 @@ class Manager
     void addScoop(Scoop sc);
     void addContainer(Container co);
     void addToppings(Toppings ts);
-    void addServer(Server ser);
     void itemListing();
 
     void populateStuff();
 
   private:
-    vector<Server> serverList;
     vector<Item> itemList;
     vector<Scoop> scoopList;
     vector<Container> containerList;

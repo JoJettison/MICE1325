@@ -5,7 +5,7 @@ void Controller::executeCmd(int cmd)
   string Name, Description;
   double wholesaleCost, retailPrice;
   int remainingStock, maximumScoops,style;
-  if (cmd==1)                               //Add Item
+  if (cmd==1)
   {
   cout<<"Enter the item's Name"<<endl;
   getline(cin,Name);
@@ -24,7 +24,7 @@ void Controller::executeCmd(int cmd)
   manager.addItem(Item(Name,Description,wholesaleCost,retailPrice,remainingStock));
   }
 
-  if (cmd==2)                                     //Add Flavor
+  if (cmd==2)
   {
 
     string name, description, a, b, c;
@@ -37,7 +37,7 @@ void Controller::executeCmd(int cmd)
 
     // NAME
     Gtk::HBox b_name;
-
+    
     Gtk::Label l_name{"Name:"};
     l_name.set_width_chars(15);
     b_name.pack_start(l_name, Gtk::PACK_SHRINK);
@@ -59,7 +59,7 @@ void Controller::executeCmd(int cmd)
     b_description.pack_start(e_description, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_description, Gtk::PACK_SHRINK);
 
-    // WHOLESALE
+    // WHOLESALE  
     Gtk::HBox b_wholesaleCost;
 
     Gtk::Label l_wholesaleCost{"Whole Sale Cost:"};
@@ -101,7 +101,7 @@ void Controller::executeCmd(int cmd)
     dialog->show_all();
     int result = dialog->run();
 
-    dialog->close();
+    dialog->close();  
 
     name = e_name.get_text();
     description = e_description.get_text();
@@ -120,7 +120,7 @@ void Controller::executeCmd(int cmd)
     manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice,remainingStock));
   }
 
-  if (cmd==3)                                     //Add Topping
+  if (cmd==3)
   {
 
     string name, description, a, b, c;
@@ -133,7 +133,7 @@ void Controller::executeCmd(int cmd)
 
     // NAME
     Gtk::HBox b_name;
-
+    
     Gtk::Label l_name{"Name:"};
     l_name.set_width_chars(15);
     b_name.pack_start(l_name, Gtk::PACK_SHRINK);
@@ -155,7 +155,7 @@ void Controller::executeCmd(int cmd)
     b_description.pack_start(e_description, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_description, Gtk::PACK_SHRINK);
 
-    // WHOLESALE
+    // WHOLESALE  
     Gtk::HBox b_wholesaleCost;
 
     Gtk::Label l_wholesaleCost{"Whole Sale Cost:"};
@@ -197,7 +197,7 @@ void Controller::executeCmd(int cmd)
     dialog->show_all();
     int result = dialog->run();
 
-    dialog->close();
+    dialog->close();  
 
     name = e_name.get_text();
     description = e_description.get_text();
@@ -211,10 +211,10 @@ void Controller::executeCmd(int cmd)
     bb >> retailPrice;
     stringstream cc(c);
     cc >> remainingStock;
-
+  
     manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
   }
-  if (cmd==4)                                 //Add container
+  if (cmd==4)
   {
 
     string name, description, a, b, c, d;
@@ -227,7 +227,7 @@ void Controller::executeCmd(int cmd)
 
     // NAME
     Gtk::HBox b_name;
-
+    
     Gtk::Label l_name{"Name:"};
     l_name.set_width_chars(15);
     b_name.pack_start(l_name, Gtk::PACK_SHRINK);
@@ -249,7 +249,7 @@ void Controller::executeCmd(int cmd)
     b_description.pack_start(e_description, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_description, Gtk::PACK_SHRINK);
 
-    // WHOLESALE
+    // WHOLESALE  
     Gtk::HBox b_wholesaleCost;
 
     Gtk::Label l_wholesaleCost{"Whole Sale Cost:"};
@@ -295,7 +295,7 @@ void Controller::executeCmd(int cmd)
     Gtk::Entry e_maximumScoops;
     e_maximumScoops.set_max_length(50);
     b_maximumScoops.pack_start(e_maximumScoops, Gtk::PACK_SHRINK);
-    dialog->get_vbox()->pack_start(b_maximumScoops, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_maximumScoops, Gtk::PACK_SHRINK);    
 
     // Show dialog
     dialog->add_button("Cancel", 0);
@@ -303,7 +303,7 @@ void Controller::executeCmd(int cmd)
     dialog->show_all();
     int result = dialog->run();
 
-    dialog->close();
+    dialog->close();  
 
     name = e_name.get_text();
     description = e_description.get_text();
@@ -324,20 +324,4 @@ void Controller::executeCmd(int cmd)
     manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
   }
 
-  if(cmd==5)                        //Add Server
-  {
-    Server serves;
-
-
-  }
-
-  if (cmd==6)                     //Create Serving
-  {
-
-  }
-
-  if(cmd==7)                      //create Order
-  {
-
-  }
 }

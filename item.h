@@ -8,19 +8,11 @@ using namespace std;
 class Item
 {
 	public:
-		Item (string Name, string Description, double wholesaleCost, double retailPrice, int RemainingStock);
-		void restock(int restock=25);
-		void consume(int quantity=1);
-		virtual string type();
-		string iname();
-		string description();
-		double cost();
-		double price();
-		int remainStock();
-
+		Item (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock):
+		name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{remainingStock} { }
 		void to_string();
 
-
+		
 
 
 	protected:

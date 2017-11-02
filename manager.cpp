@@ -20,12 +20,6 @@ void Manager::addToppings(Toppings ts)
 {
 toppingsList.push_back(ts);
 }
-void Manager::addServer(Server sv)
-{
-  serverList.push_back(sv);
-}
-
-
 
 
 void Manager::populateStuff(){}

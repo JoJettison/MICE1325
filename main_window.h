@@ -2,7 +2,6 @@
 #define MAIN_WINDOW_H
 
 #include <gtkmm.h>
-#include "item.h"
 #include "container.h"
 #include "scoop.h"
 #include "toppings.h"
