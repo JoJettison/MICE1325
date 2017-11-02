@@ -20,7 +20,6 @@ double Server::currentSal()
 int fill()
 {
   orders+=1;
-
 }
 
 string Server::pType()

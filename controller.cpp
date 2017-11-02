@@ -24,7 +24,7 @@ void Controller::executeCmd(int cmd)
   manager.addItem(Item(Name,Description,wholesaleCost,retailPrice,remainingStock));
   }
 
-  if (cmd==2)
+  if (cmd==2)       // Flavor
   {
 
     string name, description, a, b, c;
@@ -120,7 +120,7 @@ void Controller::executeCmd(int cmd)
     manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice,remainingStock));
   }
 
-  if (cmd==3)
+  if (cmd==3)       // Topping
   {
 
     string name, description, a, b, c;
@@ -214,7 +214,7 @@ void Controller::executeCmd(int cmd)
 
     manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
   }
-  if (cmd==4)
+  if (cmd==4)       // Container
   {
 
     string name, description, a, b, c, d;
@@ -324,7 +324,7 @@ void Controller::executeCmd(int cmd)
     manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
   }
 
-  if (cmd == 5)
+  if (cmd == 5)     // Order
   {
 
     int numServings, i;
@@ -387,19 +387,21 @@ void Controller::executeCmd(int cmd)
     }
   }
 
-  if (cmd == 6)
+  if (cmd == 6)     //Customer
   {
 
   }
 
-  if (cmd == 7)
+  if (cmd == 7)     // Server
   {
 
   }
 
-  if (cmd == 8)
+  if (cmd == 8)     // Create Serving
   {
-    string container, flavor, topping, toppingQuantity, phoneNum;
+    string container, flavor, topping, toppingQuantity, phoneNum, scoList, contList;
+
+
 
     Gtk::Dialog *dialog = new Gtk::Dialog();
     dialog->set_title("Create Serving");
@@ -412,7 +414,7 @@ void Controller::executeCmd(int cmd)
 
     Gtk::ComboBoxText c_container;
     c_container.set_size_request(160);
-    c_container.append("Waffle Cone");
+   c_container.append("Waffle Cone");
     c_container.append("Cup");
     b_container.pack_start(c_container, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_container, Gtk::PACK_SHRINK);
@@ -425,8 +427,13 @@ void Controller::executeCmd(int cmd)
 
     Gtk::ComboBoxText c_flavor;
     c_flavor.set_size_request(160);
-    c_flavor.append("Chocolate");
-    c_flavor.append("Vanilla");
+    for(int i=0; i<manager.getScoops().size(); i++){
+        stringstream aa(manager.scoopListing(i));
+        aa >> scoList;
+
+    c_flavor.append(scoList);
+   }
+    //c_flavor.append("Vanilla");
     b_flavor.pack_start(c_flavor, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_flavor, Gtk::PACK_SHRINK);
 
@@ -478,7 +485,7 @@ void Controller::executeCmd(int cmd)
     dialog->close();
   }
 
-  if (cmd == 9)
+  if (cmd == 9)   // Display serving
   {
 
   }

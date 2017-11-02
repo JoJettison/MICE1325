@@ -6,6 +6,7 @@
 #include "scoop.h"
 #include "toppings.h"
 #include "controller.h"
+#include "serving.h"
 #include "manager.h"
 
 class Main_window : public Gtk::Window

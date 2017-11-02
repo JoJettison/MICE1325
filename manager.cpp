@@ -20,6 +20,14 @@ void Manager::addToppings(Toppings ts)
 {
 toppingsList.push_back(ts);
 }
+vector<Scoop> Manager::getScoops()
+{
+  return scoopList;
+}
+string Manager::scoopListing(int i)
+{
+  return scoopList[i].iname();
+}
 
 
 void Manager::populateStuff(){}
