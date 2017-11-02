@@ -29,16 +29,18 @@ testItem: testItem.o item.o
 	$(CXX) $(CXXFLAGS) -o testItem testItem.o item.o
 serving.o: serving.cpp serving.h
 	$(CXX) $(CXXFLAGS) -c serving.cpp
+server.o: server.cpp server.h
+	$(CXX) $(CXXFLAGS) -c server.cpp
 testServing.o: testServing.cpp serving.h
 	$(CXX) $(CXXFLAGS) -c -w testServing.cpp
 testServing: testServing.o serving.o item.o toppings.o scoop.o container.o
 	$(CXX) $(CXXFLAGS) -o testServing testServing.o serving.o scoop.o container.o toppings.o item.o
 person.o: person.cpp person.h
 	$(CXX) $(CXXFLAGS) -c person.cpp
-testPerson.o: testPerson.cpp person.h
-	$(CXX) $(CXXFLAGS) -c -w testPerson.cpp
-testPerson: testPerson.o person.o
-	$(CXX) $(CXXFLAGS) -o testPerson testPerson.o person.o
+testServer.o: testServer.cpp server.h
+	$(CXX) $(CXXFLAGS) -c -w testServer.cpp
+testServer: testServer.o person.o server.o
+	$(CXX) $(CXXFLAGS) -o testServer testServer.o person.o server.o
 testScoop.o: testScoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testScoop.cpp
 testScoop: testScoop.o scoop.o item.o

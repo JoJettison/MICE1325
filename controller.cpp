@@ -327,10 +327,17 @@ void Controller::executeCmd(int cmd)
   if(cmd==5)                        //Add Server
   {
     Server serves;
-    
-
 
 
   }
 
+  if (cmd==6)                     //Create Serving
+  {
+
+  }
+
+  if(cmd==7)                      //create Order
+  {
+
+  }
 }

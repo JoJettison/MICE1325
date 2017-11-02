@@ -11,7 +11,7 @@ class Server :public Person
     Server(string Name, int IDcode, string phoneNum);
     int ordersFilled();
     double currentSal();
-    int fill();
+    void fill();
     void replenishSup();
 
   private:
