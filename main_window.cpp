@@ -76,6 +76,7 @@ Main_window::Main_window(Controller controller):controller(controller)
     menuitem_help->set_submenu(*helpmenu);
 
     Gtk::MenuItem *menuitem_about = Gtk::manage(new Gtk::MenuItem("About", true));
+    menuitem_help->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_about_click));
     helpmenu->append(*menuitem_about);
 
     Gtk::Toolbar *toolbar = Gtk::manage(new Gtk::Toolbar);
@@ -88,7 +89,7 @@ Main_window::~Main_window() {}
 
 void Main_window::on_quit_click()
 {
-    hide();   
+    hide();
 }
 
 void Main_window::on_serving_click()
@@ -98,12 +99,12 @@ void Main_window::on_serving_click()
 
 void Main_window::on_order_click()
 {
-    controller.executeCmd(5);  
+    controller.executeCmd(5);
 }
 
 void Main_window::on_customer_click()
 {
-    //controller.executeCmd(6);    
+    //controller.executeCmd(6);
 }
 
 void Main_window::on_container_click()
@@ -123,10 +124,15 @@ void Main_window::on_topping_click()
 
 void Main_window::on_server_click()
 {
-    //controller.executeCmd(7);    
+    //controller.executeCmd(7);
 }
 
 void Main_window::on_servingDis_click()
 {
     //controller.executeCmd(9);
+}
+
+void Main_window::on_about_click()
+{
+  controller.executeCmd(10);
 }

@@ -20,13 +20,13 @@ void Manager::addToppings(Toppings ts)
 {
 toppingsList.push_back(ts);
 }
-vector<Scoop> Manager::getScoops()
+vector<Scoop> Manager::getScoops()   //Returns Vector of scoops
 {
   return scoopList;
 }
 string Manager::scoopListing(int i)
 {
-  return scoopList[i].iname();
+  return scoopList[i].iname(); //Returns name method of Specified scoop vector
 }
 
 

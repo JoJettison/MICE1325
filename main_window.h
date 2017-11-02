@@ -24,6 +24,7 @@ class Main_window : public Gtk::Window
         void on_flavor_click();
         void on_topping_click();
         void on_quit_click();
+        void on_about_click();
     private:
       Controller controller;
 };

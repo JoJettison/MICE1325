@@ -401,7 +401,7 @@ void Controller::executeCmd(int cmd)
   {
     string container, flavor, topping, toppingQuantity, phoneNum, scoList, contList;
 
-
+////////////////////<PROBLEM AREA>///////////////////////////////
 
     Gtk::Dialog *dialog = new Gtk::Dialog();
     dialog->set_title("Create Serving");
@@ -433,7 +433,6 @@ void Controller::executeCmd(int cmd)
 
     c_flavor.append(scoList);
    }
-    //c_flavor.append("Vanilla");
     b_flavor.pack_start(c_flavor, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_flavor, Gtk::PACK_SHRINK);
 
@@ -485,9 +484,20 @@ void Controller::executeCmd(int cmd)
     dialog->close();
   }
 
+///////////////////////</PROBLEM AREA>/////////////////////
+
   if (cmd == 9)   // Display serving
   {
 
+  }
+
+  if(cmd==10)
+  {
+    manager.addScoop(Scoop("Strawberry","delicious pink creamy goodness", 5.2, 3.1, 30));
+    manager.addScoop(Scoop("Chocolate","delicious pink creamy goodness", 5.2, 3.1, 30));
+    manager.addScoop(Scoop("Vanilla","delicious pink creamy goodness", 5.2, 3.1, 30));
+    manager.addScoop(Scoop("Mint Chocolate Chip ","delicious pink creamy goodness", 5.2, 3.1, 30));
+    manager.addScoop(Scoop("Rum Rasin","delicious pink creamy goodness", 5.2, 3.1, 30));
   }
 
 }

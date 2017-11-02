@@ -1,9 +1,10 @@
 CXXFLAGS = --std=c++11
 
 all:main_window
+rebuild: div clean main_window
 
 debug: CXXFLAGS += -g
-debug: main_window
+debug: rebuild
 main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o item.o
 	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 	./mice
@@ -45,3 +46,11 @@ person.o: person.cpp *.h
 	$(CXX) $(CXXFLAGS) -c person.cpp
 clean:
 	-rm -f *.o testItem testScoop testContainer testToppings testServing mice
+
+div:
+	@echo
+	@echo 'X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-'
+	@echo '-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X'
+	@echo 'X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-'
+	@echo '-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X-X'
+	@echo
