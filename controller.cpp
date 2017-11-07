@@ -2,11 +2,12 @@
 
 void Controller::executeCmd(int cmd)
 {
-  string Name, Description;
-  double wholesaleCost, retailPrice;
-  int remainingStock, maximumScoops,style;
+
   if (cmd==1)
   {
+    string Name, Description;
+    double wholesaleCost, retailPrice;
+    int remainingStock, maximumScoops;
   cout<<"Enter the item's Name"<<endl;
   getline(cin,Name);
   cout<<"Enter the description of the item"<<endl;
@@ -117,7 +118,7 @@ void Controller::executeCmd(int cmd)
     cc >> remainingStock;
 
 
-    manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice,remainingStock));
+    manager.addScoop(Scoop(name,description,wholesaleCost,retailPrice,remainingStock));
   }
 
   if (cmd==3)
@@ -125,7 +126,7 @@ void Controller::executeCmd(int cmd)
 
     string name, description, a, b, c;
     double wholesaleCost, retailPrice;
-    int remainingStock;
+    int remainingStock,style;
     bool cancel = false;
 
     Gtk::Dialog *dialog = new Gtk::Dialog();
@@ -212,7 +213,7 @@ void Controller::executeCmd(int cmd)
     stringstream cc(c);
     cc >> remainingStock;
 
-    manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
+    manager.addToppings(Toppings(name,description,style,wholesaleCost,retailPrice,remainingStock));
   }
   if (cmd==4)
   {
@@ -321,7 +322,7 @@ void Controller::executeCmd(int cmd)
     stringstream dd(d);
     dd >> maximumScoops;
 
-    manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
+    manager.addContainer(Container(name,description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
   }
 
   if (cmd == 5)
@@ -329,7 +330,7 @@ void Controller::executeCmd(int cmd)
     string orderID, servings, server, customer;
 
     Gtk::Dialog *dialog = new Gtk::Dialog();
-    dialog->set_title("Create Order"); 
+    dialog->set_title("Create Order");
 
     // ORDER ID
     Gtk::HBox b_name;
@@ -341,14 +342,14 @@ void Controller::executeCmd(int cmd)
     Gtk::Entry e_name;
     e_name.set_max_length(50);
     b_name.pack_start(e_name, Gtk::PACK_SHRINK);
-    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);   
+    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);
 
     dialog->add_button("Cancel", 0);
     dialog->add_button("OK", 1);
     dialog->show_all();
     int result = dialog->run();
 
-dialog->close();     
+dialog->close();
   }
 
   if (cmd == 6)
@@ -409,7 +410,7 @@ dialog->close();
     a = e_ID.get_text();
 
     stringstream aa(a);
-    aa >> ID;    
+    aa >> ID;
   }
 
   if (cmd == 7)
@@ -469,12 +470,12 @@ dialog->close();
     a = e_ID.get_text();
 
     stringstream aa(a);
-    aa >> ID;     
+    aa >> ID;
   }
 
-if (cmd == 8)
+if (cmd == 8)         //Create Serving
 {
-    string container, flavor, topping, toppingQuantity, phoneNum, orderID;
+    string conList, scoList, topList, toppingQuantity, phoneNum, orderID;
 
     Gtk::Dialog *dialog = new Gtk::Dialog();
     dialog->set_title("Create Serving");
@@ -487,8 +488,12 @@ if (cmd == 8)
 
     Gtk::ComboBoxText c_container;
     c_container.set_size_request(160);
-    c_container.append("Waffle Cone");
-    c_container.append("Cup");
+    for(int i=0; i<manager.getContainers().size(); i++){
+      stringstream aa(manager.containerListing(i));
+      aa>>conList;
+      c_container.append(conList);
+    }
+
     b_container.pack_start(c_container, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_container, Gtk::PACK_SHRINK);
 
@@ -500,8 +505,11 @@ if (cmd == 8)
 
     Gtk::ComboBoxText c_flavor;
     c_flavor.set_size_request(160);
-    c_flavor.append("Chocolate");
-    c_flavor.append("Vanilla");
+    for(int i=0; i<manager.getScoops().size(); i++){
+         stringstream bb(manager.scoopListing(i));
+         bb >> scoList;
+     c_flavor.append(scoList);
+    }
     b_flavor.pack_start(c_flavor, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_flavor, Gtk::PACK_SHRINK);
 
@@ -513,8 +521,11 @@ if (cmd == 8)
 
     Gtk::ComboBoxText c_topping;
     c_topping.set_size_request(160);
-    c_topping.append("Sprinkles");
-    c_topping.append("Syrup");
+    for(int i=0; i<manager.getToppings().size(); i++){
+       stringstream cc(manager.toppingsListing(i));
+       cc >> topList;
+   c_flavor.append(topList);
+  }
     b_topping.pack_start(c_topping, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_topping, Gtk::PACK_SHRINK);
 
@@ -538,45 +549,44 @@ if (cmd == 8)
 
     Gtk::Label l_phoneNum{"Customer's Phone Number:"};
     l_phoneNum.set_width_chars(15);
-    b_phoneNum.pack_start(l_phoneNum, Gtk::PACK_SHRINK);    
+    b_phoneNum.pack_start(l_phoneNum, Gtk::PACK_SHRINK);
 
     Gtk::Entry e_phoneNum;
     e_phoneNum.set_max_length(50);
     b_phoneNum.pack_start(e_phoneNum, Gtk::PACK_SHRINK);
-    dialog->get_vbox()->pack_start(b_phoneNum, Gtk::PACK_SHRINK);     
+    dialog->get_vbox()->pack_start(b_phoneNum, Gtk::PACK_SHRINK);
 
     Gtk::HBox b_orderID;
 
     Gtk::Label l_orderID{"ID for the Order:"};
     l_orderID.set_width_chars(15);
-    b_orderID.pack_start(l_orderID, Gtk::PACK_SHRINK);    
+    b_orderID.pack_start(l_orderID, Gtk::PACK_SHRINK);
 
     Gtk::Entry e_orderID;
     e_orderID.set_max_length(50);
     b_orderID.pack_start(e_orderID, Gtk::PACK_SHRINK);
-    dialog->get_vbox()->pack_start(b_orderID, Gtk::PACK_SHRINK);       
+    dialog->get_vbox()->pack_start(b_orderID, Gtk::PACK_SHRINK);
 
     dialog->add_button("Cancel", 0);
     dialog->add_button("OK", 1);
     dialog->show_all();
     int result = dialog->run();
 
-    dialog->close();     
-    }  
+    dialog->close();
+    }
 
     if (cmd == 9)
     {
     string container, flavor, topping, toppingQuantity, phoneNum, orderID;
 
     Gtk::Dialog *dialog = new Gtk::Dialog();
-    dialog->set_title("Display Serving");       
+    dialog->set_title("Display Serving");
 
     dialog->add_button("Cancel", 0);
     dialog->add_button("OK", 1);
     dialog->show_all();
     int result = dialog->run();
 
-    dialog->close(); 
+    dialog->close();
     }
 }
-
