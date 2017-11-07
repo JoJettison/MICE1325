@@ -524,7 +524,7 @@ if (cmd == 8)         //Create Serving
     for(int i=0; i<manager.getToppings().size(); i++){
        stringstream cc(manager.toppingsListing(i));
        cc >> topList;
-   c_flavor.append(topList);
+   c_topping.append(topList);
   }
     b_topping.pack_start(c_topping, Gtk::PACK_SHRINK);
     dialog->get_vbox()->pack_start(b_topping, Gtk::PACK_SHRINK);
