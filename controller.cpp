@@ -2,11 +2,12 @@
 
 void Controller::executeCmd(int cmd)
 {
-  string Name, Description;
-  double wholesaleCost, retailPrice;
-  int remainingStock, maximumScoops,style;
+
   if (cmd==1)
   {
+    string Name, Description;
+    double wholesaleCost, retailPrice;
+    int remainingStock, maximumScoops,style;
   cout<<"Enter the item's Name"<<endl;
   getline(cin,Name);
   cout<<"Enter the description of the item"<<endl;
@@ -115,9 +116,10 @@ void Controller::executeCmd(int cmd)
     bb >> retailPrice;
     stringstream cc(c);
     cc >> remainingStock;
-
-
-    manager.addScoop(Scoop(Name,Description,wholesaleCost,retailPrice,remainingStock));
+    cout<<name<<endl;
+    cout<<description<<endl;
+    cout<<c<<endl;
+    manager.addScoop(Scoop(name,description,wholesaleCost,retailPrice,remainingStock));
   }
 
   if (cmd==3)       // Topping
@@ -125,7 +127,7 @@ void Controller::executeCmd(int cmd)
 
     string name, description, a, b, c;
     double wholesaleCost, retailPrice;
-    int remainingStock;
+    int remainingStock, style;
     bool cancel = false;
 
     Gtk::Dialog *dialog = new Gtk::Dialog();
@@ -212,7 +214,7 @@ void Controller::executeCmd(int cmd)
     stringstream cc(c);
     cc >> remainingStock;
 
-    manager.addToppings(Toppings(Name,Description,style,wholesaleCost,retailPrice,remainingStock));
+    manager.addToppings(Toppings(name,description,style,wholesaleCost,retailPrice,remainingStock));
   }
   if (cmd==4)       // Container
   {
@@ -321,7 +323,7 @@ void Controller::executeCmd(int cmd)
     stringstream dd(d);
     dd >> maximumScoops;
 
-    manager.addContainer(Container(Name,Description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
+    manager.addContainer(Container(name,description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
   }
 
   if (cmd == 5)     // Order
@@ -430,7 +432,7 @@ void Controller::executeCmd(int cmd)
     for(int i=0; i<manager.getScoops().size(); i++){
         stringstream aa(manager.scoopListing(i));
         aa >> scoList;
-
+        cout<<scoList<<endl;
     c_flavor.append(scoList);
    }
     b_flavor.pack_start(c_flavor, Gtk::PACK_SHRINK);
@@ -498,6 +500,7 @@ void Controller::executeCmd(int cmd)
     manager.addScoop(Scoop("Vanilla","delicious pink creamy goodness", 5.2, 3.1, 30));
     manager.addScoop(Scoop("Mint Chocolate Chip ","delicious pink creamy goodness", 5.2, 3.1, 30));
     manager.addScoop(Scoop("Rum Rasin","delicious pink creamy goodness", 5.2, 3.1, 30));
+
   }
 
 }
