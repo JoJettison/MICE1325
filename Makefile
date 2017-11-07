@@ -5,8 +5,8 @@ rebuild: div clean main_window
 
 debug: CXXFLAGS += -g
 debug: rebuild
-main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o item.o
-	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o item.o customer.o serving.o person.o server.o
+	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o customer.o serving.o person.o server.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 	./mice
 main.o: main.cpp main_window.h
 	$(CXX) $(CXXFLAGS) -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
@@ -30,6 +30,14 @@ testItem: testItem.o item.o
 	$(CXX) $(CXXFLAGS) -o testItem testItem.o item.o
 scoop.o: scoop.cpp scoop.h
 	$(CXX) $(CXXFLAGS) -c scoop.cpp
+serving.o: serving.cpp serving.h
+	$(CXX) $(CXXFLAGS) -c serving.cpp
+person.o: person.cpp person.h
+	$(CXX) $(CXXFLAGS) -c person.cpp
+customer.o: customer.cpp customer.h
+	$(CXX) $(CXXFLAGS) -c customer.cpp
+server.o: server.cpp server.h
+	$(CXX) $(CXXFLAGS) -c server.cpp
 testScoop.o: testScoop.cpp scoop.h item.h
 	$(CXX) $(CXXFLAGS) -c -w testScoop.cpp
 testScoop: testScoop.o scoop.o item.o
