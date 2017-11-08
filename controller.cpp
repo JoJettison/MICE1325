@@ -664,4 +664,30 @@ void Controller::executeCmd(int cmd)
     dialog->close();
     }
 
+    if (cmd == 10)
+    {
+        Gtk::Dialog *dialog = new Gtk::Dialog();
+        dialog->set_title("Create Manager");
+
+    // NAME
+    Gtk::HBox b_name;
+
+    Gtk::Label l_name{"Name:"};
+    l_name.set_width_chars(15);
+    b_name.pack_start(l_name, Gtk::PACK_SHRINK);
+
+    Gtk::Entry e_name;
+    e_name.set_max_length(50);
+    b_name.pack_start(e_name, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK); 
+    
+        dialog->add_button("Cancle", 0);
+        dialog->add_button("OK", 1);
+        dialog->show_all();
+        int result = dialog->run();
+
+        dialog->close();       
+
+    }
+
 }

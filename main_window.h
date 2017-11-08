@@ -18,6 +18,7 @@ class Main_window : public Gtk::Window
         void on_serving_click();
         void on_customer_click();
         void on_server_click();
+        void on_manager_click();
         void on_servingDis_click();
         void on_container_click();
         void on_flavor_click();

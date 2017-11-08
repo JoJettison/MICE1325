@@ -71,6 +71,10 @@ Main_window::Main_window(Controller controller):controller(controller)
     Gtk::MenuItem *menuitem_server = Gtk::manage (new Gtk::MenuItem("_New Server", true));
     menuitem_server->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_server_click));
     createmenu->append(*menuitem_server);
+    // C R E A T E   A N D   A P P E N D   N E W   M A N A G E R   T O   C R E A T E   M E N U
+    Gtk::MenuItem *menuitem_manager = Gtk::manage (new Gtk::MenuItem("_New Manager", true));
+    menuitem_manager->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_manager_click));
+    createmenu->append(*menuitem_manager);    
 
 
     // C R E A T E   A N D   A P P E N D   D I S P L A Y   T O   M E N U B A R
@@ -158,4 +162,9 @@ void Main_window::on_server_click()
 void Main_window::on_servingDis_click()
 {
     controller.executeCmd(9);
+}
+
+void Main_window::on_manager_click()
+{
+    controller.executeCmd(10);
 }
