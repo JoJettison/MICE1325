@@ -610,11 +610,12 @@ void Controller::executeCmd(int cmd)
     string container, flavor, topping, toppingQuantity, phoneNum, orderID;
 
     Gtk::MessageDialog *dialog = new Gtk::MessageDialog("Current Servings");
-
-    dialog->add_button("Cancel", 0);
-    dialog->add_button("OK", 1);
+    dialog->set_secondary_text("Servings:",true);
+    
     dialog->show_all();
     int result = dialog->run();
+
+    manager.servingToString();
 
     dialog->close();
     }
