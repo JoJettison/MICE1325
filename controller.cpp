@@ -517,7 +517,7 @@ dialog->close();
         for(int i = 0; i < maxScoop; i++)
         {
             Gtk::Dialog *flavorDia = new Gtk::Dialog();
-            flavorDia->set_title("Create Serving");    
+            flavorDia->set_title("Create Serving");
 
                 Gtk::HBox b_flavor;
 
@@ -532,7 +532,7 @@ dialog->close();
                         stringstream bb(manager.scoopListing(i));
                         bb >> scoList;
                         c_flavor.append(scoList);
-                    }             
+                    }
                 b_flavor.pack_start(c_flavor, Gtk::PACK_SHRINK);
                 flavorDia->get_vbox()->pack_start(b_flavor, Gtk::PACK_SHRINK);
 
@@ -591,8 +591,8 @@ dialog->close();
         toppingDia->show_all();
         int resultTopp = toppingDia->run();
 
-        toppingDia->close();  
-        toppingDia->hide(); 
+        toppingDia->close();
+        toppingDia->hide();
         topping = c_topping.get_active_row_number();
 
     }
