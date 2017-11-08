@@ -6,7 +6,7 @@ rebuild: div clean main_window
 debug: CXXFLAGS += -g
 debug: rebuild
 main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o item.o customer.o  person.o server.o serving.o
-	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o customer.o  person.o server.o  serving.o`/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o customer.o  person.o server.o serving.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 	./mice
 main.o: main.cpp main_window.h
 	$(CXX) $(CXXFLAGS) -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
