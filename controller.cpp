@@ -349,7 +349,7 @@ void Controller::executeCmd(int cmd)
     dialog->show_all();
     int result = dialog->run();
 
-dialog->close();
+    dialog->close();
   }
 
   if (cmd == 6)
@@ -411,6 +411,7 @@ dialog->close();
 
     stringstream aa(a);
     aa >> ID;
+     manager.addCustomer(Customer(name,ID,phoneNum));
   }
 
   if (cmd == 7)
@@ -471,12 +472,16 @@ dialog->close();
 
     stringstream aa(a);
     aa >> ID;
+
+     manager.addServer(Server(name,ID,phoneNum));
   }
 
     if (cmd==8)         //Create Serving
     {
     int container, maxScoop, topping;
     string conList, scoList, topList, toppingQuantity;
+    vector<Scoop> serScoop;
+    vector<Toppings> serTop;
 
     // C O N T A I N E R   D I A L O G
     //////////////////////////////////
@@ -544,6 +549,7 @@ dialog->close();
             flavorDia->close();
             flavorDia->hide();
             flavor[i] = c_flavor.get_active_row_number();
+            serScoop.push_back(manager.getScoops()[i]);
         }
 
 
@@ -594,15 +600,16 @@ dialog->close();
         toppingDia->close();
         toppingDia->hide();
         topping = c_topping.get_active_row_number();
+        serTop.push_back(manager.getToppings()[topping]);
 
+        manager.addServing(Serving(manager.getContainers()[container],serScoop,serTop));
     }
 
     if (cmd == 9)
     {
     string container, flavor, topping, toppingQuantity, phoneNum, orderID;
 
-    Gtk::Dialog *dialog = new Gtk::Dialog();
-    dialog->set_title("Display Serving");
+    Gtk::MessageDialog *dialog = new Gtk::MessageDialog("Current Servings");
 
     dialog->add_button("Cancel", 0);
     dialog->add_button("OK", 1);
@@ -611,5 +618,7 @@ dialog->close();
 
     dialog->close();
     }
+
+
 
 }

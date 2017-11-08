@@ -1,8 +1,5 @@
 #include"manager.h"
-#include"item.h"
-#include"scoop.h"
-#include"toppings.h"
-#include"container.h"
+
 
 void Manager::addItem(Item it)
 {
@@ -20,10 +17,32 @@ void Manager::addToppings(Toppings ts)
 {
 toppingsList.push_back(ts);
 }
+
+void Manager::addPerson(Person ps)
+{
+personList.push_back(ps);
+}
+
+void Manager::addCustomer(Customer cu)
+{
+customerList.push_back(cu);
+}
+
+void Manager::addServer(Server se)
+{
+serverList.push_back(se);
+}
+
+void Manager::addServing(Serving sr)
+{
+servingList.push_back(sr);
+}
+
 vector<Scoop> Manager::getScoops()   //Returns Vector of scoops
 {
   return scoopList;
 }
+
 string Manager::scoopListing(int i)
 {
   return scoopList[i].iname(); //Returns name method of Specified scoop vector
@@ -46,9 +65,43 @@ vector<Toppings> Manager::getToppings()   //Returns Vector of toppings
 {
   return toppingsList;
 }
+
+Toppings Manager::getToppins(int i)
+{
+  return toppingsList[i];
+}
+Scoop Manager::getScoop(int i)
+{
+    return scoopList[i];
+}
+
+Container Manager::getContainer(int i)
+{
+    return containerList[i];
+}
 string Manager::toppingsListing(int i)
 {
   return toppingsList[i].iname(); //Returns name method of Specified toppings vector
+}
+
+string Manager::servingToString()
+{
+  string con, sco, top;
+    for(int i=0; i<servingList.size(); i++)
+    {
+        con= containerList[i].iname();
+        cout<<con<<endl;
+        for(int j =0; j<scoopList.size(); j++ )
+        {
+            sco= scoopList[j].iname();
+            cout<<sco<<endl;
+        }
+        for(int k=0; k<toppingsList.size(); k++)
+        {
+            top= toppingsList[k].iname();
+            cout<<top<<endl;
+        }
+    }
 }
 
 
