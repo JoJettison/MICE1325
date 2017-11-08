@@ -411,6 +411,8 @@ dialog->close();
 
     stringstream aa(a);
     aa >> ID;
+
+    manager.addCustomer(Customer(name,ID,phoneNum));
   }
 
   if (cmd == 7)
@@ -471,6 +473,8 @@ dialog->close();
 
     stringstream aa(a);
     aa >> ID;
+
+    manager.addServer(Server(name,ID,phoneNum));
   }
 
 if (cmd == 8)         //Create Serving
