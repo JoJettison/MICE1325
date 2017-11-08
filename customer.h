@@ -8,7 +8,7 @@ using namespace std;
 class Customer: public Person
 {
 	public:
-		Customer(string Name, int IDcode, string phoneNum):Person(Name, IDcode, phoneNum){}
+		Customer(string Name, int IDcode, string phoneNum);
 
 	private:
 		string name;

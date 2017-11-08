@@ -3,9 +3,11 @@
 #include <string>
 using namespace std;
 
-void Toppings::to_string()
-{
+Toppings::Toppings(string Name, string Description,int topStyle, double wholesaleCost, double retailPrice, int remainingStock):
+Item(Name,Description,wholesaleCost,retailPrice, remainingStock), tStyle{topStyle}  { }
 
-cout<<name <<", "<<desc<<style.to_string()<<" Cost to purchase: "<<"$"<<wholeCost<< " Sold for "<<"$"<<retPri<< " RemainingStock: "<<remStock<< " units"<<endl;
+string Toppings::type()
+{
+  return "Topping";
 
 }

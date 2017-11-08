@@ -3,9 +3,10 @@
 #include <iostream>
 using namespace std;
 
-void Scoop::to_string()
-{
+Scoop::Scoop(string Name, string Description, double wholesaleCost, double retailPrice, int RemainingStock)
+ :Item(Name,Description,wholesaleCost,retailPrice, RemainingStock){ }
 
-  cout<<name<<":"<<" A scoop of "<< desc+" Cost to purchase: "<<wholeCost<<" Sold for "<<"$"<<retPri<<" RemainingStock: "<<remStock<<"scoops"<<endl;
-
-}
+ string Scoop::type()
+ {
+   return "Scoop";
+ }

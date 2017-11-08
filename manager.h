@@ -17,7 +17,16 @@ class Manager
     void addScoop(Scoop sc);
     void addContainer(Container co);
     void addToppings(Toppings ts);
-    void itemListing();
+    vector<Scoop> getScoops();
+    vector<Container> getContainers();
+    vector<Toppings> getToppings();
+    vector<Item> getItems();
+    string itemListing(int i);
+    string scoopListing(int i);
+    string containerListing(int i);
+    string toppingsListing(int i);
+    int getMaxScoops(int i);
+
 
     void populateStuff();
 

@@ -12,8 +12,9 @@ class Person
     string phone();
     bool status();
     void switcher();
+    virtual string pType();
 
-  private:
+  protected:
     string name;
     int id;
     string pnum;
