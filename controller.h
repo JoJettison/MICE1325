@@ -8,9 +8,8 @@
 #include "scoop.h"
 #include "container.h"
 #include "toppings.h"
+#include "serving.h"
 #include "manager.h"
-#include "person.h"
-#include "server.h"
 #include <iostream>
 #include <string>
 

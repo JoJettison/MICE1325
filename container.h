@@ -12,6 +12,11 @@ public:
 	int maximScoops();
 
 private:
+	string name;
+	string desc;
+	double wholeCost;
+	double retPri;
+	int remStock;
 	int maxScoops;
 };
 #endif

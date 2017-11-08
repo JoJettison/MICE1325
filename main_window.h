@@ -6,7 +6,6 @@
 #include "scoop.h"
 #include "toppings.h"
 #include "controller.h"
-#include "serving.h"
 #include "manager.h"
 
 class Main_window : public Gtk::Window
@@ -15,8 +14,8 @@ class Main_window : public Gtk::Window
         Main_window(Controller controller);
         virtual ~Main_window();
     protected:
-        void on_serving_click();
         void on_order_click();
+        void on_serving_click();
         void on_customer_click();
         void on_server_click();
         void on_servingDis_click();
@@ -24,7 +23,6 @@ class Main_window : public Gtk::Window
         void on_flavor_click();
         void on_topping_click();
         void on_quit_click();
-        void on_about_click();
     private:
       Controller controller;
 };
