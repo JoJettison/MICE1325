@@ -646,16 +646,16 @@ void Controller::executeCmd(int cmd)
     Gtk::Entry e_name;
     e_name.set_max_length(50);
     b_name.pack_start(e_name, Gtk::PACK_SHRINK);
-    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK); 
-    
+    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);
+
         dialog->add_button("Cancle", 0);
         dialog->add_button("OK", 1);
         dialog->show_all();
         int result = dialog->run();
 
-        dialog->close();       
+        dialog->close();
 
-    }    
+    }
 
     if (cmd == 11)
     {
@@ -683,7 +683,7 @@ void Controller::executeCmd(int cmd)
         int resultTopp = dialog->run();
 
         dialog->close();
-        dialog->hide();        
+        dialog->hide();
     }
 
     if (cmd == 12)
@@ -696,14 +696,14 @@ void Controller::executeCmd(int cmd)
         int resultTopp = dialog->run();
 
         dialog->close();
-        dialog->hide(); 
+        dialog->hide();
 
-        int scoopsNum, containerNum, toppingNum, servingNum, serverNum, customerNum, orderNum, managerNum;
-        scoopsNum = manager.getScoops().size();
-        containerNum = manager.getContainers().size();
-        toppingNum = manager.getToppings().size();
-        //serverNum = manager.getServers().size();
-        //customerNum = manager.getCustomers().size();
+        int scoopsNum, containerNum, toppingNum, servingNum, serverNum, customerNum, orderNum, emporiumNum;
+        scoopsNum = emporium.getScoops().size();
+        containerNum = emporium.getContainers().size();
+        toppingNum = emporium.getToppings().size();
+        //serverNum = emporium.getServers().size();
+        //customerNum = emporium.getCustomers().size();
 
 
         ofstream myfile;
@@ -712,18 +712,18 @@ void Controller::executeCmd(int cmd)
         //for scoops
             for (int i = 0; i < scoopsNum; i++)
             {
-                myfile << "scoop " << manager.scoopListing(i) << " " << manager.scoopDescription(i) << endl;
+                myfile << "scoop " << emporium.scoopListing(i) << " " << emporium.scoopDescription(i) << endl;
             }
 
         //for containers
             for (int i = 0; i < containerNum; i++)
             {
-                myfile << "container " << manager.containerListing(i) << endl;
+                myfile << "container " << emporium.containerListing(i) << endl;
             }
         //for toppings
             for (int i = 0; i < toppingNum; i++)
             {
-                myfile << "topping " << manager.toppingsListing(i) << endl;
+                myfile << "topping " << emporium.toppingsListing(i) << endl;
             }
 
         myfile.close();
@@ -741,7 +741,7 @@ void Controller::executeCmd(int cmd)
         int resultTopp = dialog->run();
 
         dialog->close();
-        dialog->hide(); 
+        dialog->hide();
 
 
         ifstream myfile ("default.txt");
@@ -764,7 +764,7 @@ void Controller::executeCmd(int cmd)
             int resultTopp = dialog->run();
 
             dialog->close();
-            dialog->hide();             
+            dialog->hide();
         }
     }
 
