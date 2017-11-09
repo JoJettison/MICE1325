@@ -3,7 +3,6 @@
 #include <vector>
 #include <iostream>
 
-
 using namespace std;
 
 Serving::Serving(Container container, vector<Scoop>scoops, vector<Toppings> toppings):
@@ -23,17 +22,3 @@ double Serving::price()
     }
     return scoopSum + toppingsSum + contain.price();
   }
-double Serving::cost()
-{
-  double scoopCost, toppingsCost;
-
-  for (int i=0; i<scoopList.size(); i++)
-  {
-    scoopCost += scoopList[i].cost();
-  }
-  for(int j=0; j<toppingsList.size(); j++)
-  {
-    toppingsCost+= toppingsList[j].cost();
-  }
-  return scoopCost + toppingsCost + contain.cost();
-}
