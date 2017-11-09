@@ -1,6 +1,7 @@
 #include"manager.h"
 
 
+
 void Manager::addItem(Item it)
 {
 itemList.push_back(it);
@@ -123,3 +124,6 @@ string Manager::servingToString()
 
 
 void Manager::populateStuff(){}
+
+Manager::Manager(string Name, int IDcode, string phoneNum):Person(Name,IDcode,phoneNum){}
+

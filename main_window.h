@@ -7,6 +7,7 @@
 #include "toppings.h"
 #include "controller.h"
 #include "manager.h"
+#include "emporium.h"
 
 class Main_window : public Gtk::Window
 {

@@ -1,5 +1,5 @@
-#ifndef MANAGER_H
-#define MANAGER_H
+#ifndef EMPORIUM_H
+#define EMPORIUM_H
 #include"item.h"
 #include"scoop.h"
 #include"toppings.h"
@@ -8,6 +8,7 @@
 #include "server.h"
 #include "customer.h"
 #include "serving.h"
+#include "manager.h"
 
 #include <vector>
 #include<string>
@@ -15,10 +16,17 @@
 #include <sstream>
 using namespace std;
 
-class Manager: public Person
+class Emporium
 {
   public:
-    Manager(string Name, int IDcode, string phoneNum);
+    void addItem(Item it);
+    void addScoop(Scoop sc);
+    void addContainer(Container co);
+    void addToppings(Toppings ts);
+    void addPerson(Person pe);
+    void addCustomer(Customer cu);
+    void addServer(Server se);
+    void addServing(Serving se);
 
     vector<Scoop> getScoops();
     vector<Container> getContainers();
@@ -32,25 +40,17 @@ class Manager: public Person
     vector<Server> getServers();
     vector<Customer> getCustomers();
     vector<Serving> getServings();
-    Item getItems(int i);
-    Person getPersons(int i);
-    Server getServers(int i);
-    Customer getCustomers(int i);
-    Serving getServings(int i);
 
     string itemListing(int i);
     string scoopListing(int i);
-    string scoopDescription(int i);
-    double scoopPrice(int i);
     string containerListing(int i);
-    string containerDescription(int i);
     string toppingsListing(int i);
-    string toppingsDescription(int i);
     int getMaxScoops(int i);
-    string personListing(int i);
-    string customerListing(int i);
-    string serverListing(int i);
-    string servingToString();
+    double getPrice(int i);
+    // string personListing(int i);
+    // string customerListing(int i);
+    // string serverListing(int i);
+     string servingToString();
 
 
     void populateStuff();
@@ -64,7 +64,7 @@ class Manager: public Person
     vector<Customer> customerList;
     vector<Server> serverList;
     vector<Serving> servingList;
-
+    double cash;
 
 
 };
