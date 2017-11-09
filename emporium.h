@@ -64,6 +64,7 @@ class Emporium
     vector<Customer> customerList;
     vector<Server> serverList;
     vector<Serving> servingList;
+    double cash;
 
 
 };

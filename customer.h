@@ -10,9 +10,6 @@ class Customer: public Person
 	public:
 		Customer(string Name, int IDcode, string phoneNum);
 
-	private:
-		string name;
-		int id;
-		string pnum;
+	
 };
 #endif
