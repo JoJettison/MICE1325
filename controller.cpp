@@ -613,7 +613,7 @@ void Controller::executeCmd(int cmd)
     dialog->set_secondary_text(manager.servingToString() ,true);
 
 
-  
+
     dialog->show_all();
     dialog->run();
 
