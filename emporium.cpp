@@ -103,23 +103,42 @@ string Emporium::toppingsDescription(int i)
 }
 string Emporium::servingToString()
 {
-  string con, sco, top;
+  string con,cond, sco,scod, top,topd, all, cc, tt, ss;
+  string  topp,scop,conp;
     for(int i=0; i<servingList.size(); i++)
     {
+
+        cond= containerList[i].description();
         con= containerList[i].iname();
-        cout<<con<<endl;
+        stringstream cp;
+        cp<<containerList[i].price();
+        conp=cp.str();
+            cc+=con+" "+cond+" "+conp+"\n";
+
         for(int j =0; j<scoopList.size(); j++ )
         {
+            scod=scoopList[j].description();
             sco= scoopList[j].iname();
-            cout<<sco<<endl;
+            stringstream sp;
+            sp<<containerList[i].price();
+            scop=sp.str();
+
+            ss+=sco+" "+scod+" "+scop+"\n";
+
         }
         for(int k=0; k<toppingsList.size(); k++)
         {
+            topd= toppingsList[k].description();
             top= toppingsList[k].iname();
-            cout<<top<<endl;
+            stringstream tp;
+            tp<<containerList[i].price();
+            topp=tp.str();
+            tt+=top+" "+topd+" "+topp+ "\n";
         }
-    }
-}
 
+    }
+
+    return cc+" "+ss+" "+tt;
+}
 
 void Emporium::populateStuff(){}

@@ -654,6 +654,7 @@ void Controller::executeCmd(int cmd)
         int result = dialog->run();
 
         dialog->close();
+        delete dialog;
 
     }
 
