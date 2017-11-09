@@ -84,14 +84,23 @@ string Manager::toppingsListing(int i)
   return toppingsList[i].iname(); //Returns name method of Specified toppings vector
 }
 
+double Manager::getPrice(int i)
+{
+  return servingList[i].price();
+}
+
 string Manager::servingToString()
 {
   string con,cond, sco,scod, top,topd, all, cc, tt, ss;
+  string  topp,scop,conp;
     for(int i=0; i<servingList.size(); i++)
     {
+
         cond= containerList[i].description();
         con= containerList[i].iname();
-            cc+=con+" "+cond+"\n";
+        //stringstream cp(containerList[i].price());
+        //cp>>conp;
+            cc+=con+" "+cond+" "+conp+"\n";
 
         for(int j =0; j<scoopList.size(); j++ )
         {
@@ -104,6 +113,7 @@ string Manager::servingToString()
         {
             topd= toppingsList[k].description();
             top= toppingsList[k].iname();
+
             tt+=top+" "+topd+"\n";
         }
 

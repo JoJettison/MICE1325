@@ -616,10 +616,11 @@ void Controller::executeCmd(int cmd)
 
     if (cmd == 9)
     {
-    string container, flavor, topping, toppingQuantity, phoneNum, orderID;
+    string container, flavor, topping, toppingQuantity, phoneNum, price;
+
 
     Gtk::MessageDialog *dialog = new Gtk::MessageDialog("Current Servings");
-    dialog->set_secondary_text(manager.servingToString() ,true);
+    dialog->set_secondary_text(manager.servingToString(),true);
 
 
 

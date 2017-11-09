@@ -45,10 +45,11 @@ class Manager
     string containerListing(int i);
     string toppingsListing(int i);
     int getMaxScoops(int i);
-    string personListing(int i);
-    string customerListing(int i);
-    string serverListing(int i);
-    string servingToString();
+    double getPrice(int i);
+    // string personListing(int i);
+    // string customerListing(int i);
+    // string serverListing(int i);
+     string servingToString();
 
 
     void populateStuff();
