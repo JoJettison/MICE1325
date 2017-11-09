@@ -12,6 +12,7 @@
 #include <vector>
 #include<string>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 class Manager

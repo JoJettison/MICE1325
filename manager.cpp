@@ -86,22 +86,30 @@ string Manager::toppingsListing(int i)
 
 string Manager::servingToString()
 {
-  string con, sco, top;
+  string con,cond, sco,scod, top,topd, all, cc, tt, ss;
     for(int i=0; i<servingList.size(); i++)
     {
+        cond= containerList[i].description();
         con= containerList[i].iname();
-        cout<<con<<endl;
+            cc+=con+" "+cond+"\n";
+
         for(int j =0; j<scoopList.size(); j++ )
         {
+            scod=scoopList[j].description();
             sco= scoopList[j].iname();
-            cout<<sco<<endl;
+            ss+=sco+" "+scod+"\n";
+
         }
         for(int k=0; k<toppingsList.size(); k++)
         {
+            topd= toppingsList[k].description();
             top= toppingsList[k].iname();
-            cout<<top<<endl;
+            tt+=top+" "+topd+"\n";
         }
+
     }
+
+    return cc+" "+ss+" "+tt;
 }
 
 
