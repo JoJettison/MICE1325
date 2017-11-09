@@ -26,6 +26,14 @@ Main_window::Main_window(Controller controller):controller(controller)
     // C R E A T E   A N D   A P P E N D   N E W   E M P O R I U M   T O   F I L E   M E N U
     Gtk::MenuItem *menuitem_new = Gtk::manage(new Gtk::MenuItem("_New Emporium", true));
     filemenu->append(*menuitem_new);
+    // C R E A T E   A N D   A P P E N D   S A V E   T O   F I L E   M E N U
+    Gtk::MenuItem *menuitem_save = Gtk::manage(new Gtk::MenuItem("_Save", true));
+    menuitem_save->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_save_click));
+    filemenu->append(*menuitem_save);
+    // C R E A T E   A N D   A P P E N D   L O A D   T O   F I L E   M E N U
+    Gtk::MenuItem *menuitem_load = Gtk::manage(new Gtk::MenuItem("_Load", true)); 
+    menuitem_load->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_load_click));
+    filemenu->append(*menuitem_load);   
     // C R E A T E   A N D   A P P E N D   Q U I T   T O   F I L E   M E N U
     Gtk::MenuItem *menuitem_quit = Gtk::manage(new Gtk::MenuItem("_Quit", true));
     menuitem_quit->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_quit_click));
@@ -71,6 +79,10 @@ Main_window::Main_window(Controller controller):controller(controller)
     Gtk::MenuItem *menuitem_server = Gtk::manage (new Gtk::MenuItem("_New Server", true));
     menuitem_server->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_server_click));
     createmenu->append(*menuitem_server);
+    // C R E A T E   A N D   A P P E N D   N E W   M A N A G E R   T O   C R E A T E   M E N U
+    Gtk::MenuItem *menuitem_manager = Gtk::manage (new Gtk::MenuItem("_New Manager", true));
+    menuitem_manager->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_manager_click));
+    createmenu->append(*menuitem_manager);      
 
 
     // C R E A T E   A N D   A P P E N D   D I S P L A Y   T O   M E N U B A R
@@ -84,6 +96,19 @@ Main_window::Main_window(Controller controller):controller(controller)
     Gtk::MenuItem *menuitem_servingDis = Gtk::manage(new Gtk::MenuItem("_Serving", true));
     menuitem_servingDis->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_servingDis_click));
     displaymenu->append(*menuitem_servingDis);
+
+
+    // C R E A T E   A N D   A P P E N D   M A N A G E   T O   M E N U B A R
+    ////////////////////////////////////////////////////////////////////////
+    Gtk::MenuItem *menuitem_manageStat = Gtk::manage(new Gtk::MenuItem("_Manage", true));
+    menubar->append(*menuitem_manageStat);
+    Gtk::Menu *manageStatmenu = Gtk::manage(new Gtk::Menu());
+    menuitem_manageStat->set_submenu(*manageStatmenu);
+
+    // C R E A T E   A N D   A P P E N D   O R D E R S T A T   T O   M A N A G E   M E N U
+    Gtk::MenuItem *menuitem_orderstat = Gtk::manage(new Gtk::MenuItem("_Order Status", true));
+    menuitem_orderstat->signal_activate().connect(sigc::mem_fun(*this, &Main_window::on_orderstat_click));
+    manageStatmenu->append(*menuitem_orderstat);
 
 
     // C R E A T E   A N D   A P P E N D   H E L P   T O   M E N U B A R
@@ -158,4 +183,24 @@ void Main_window::on_server_click()
 void Main_window::on_servingDis_click()
 {
     controller.executeCmd(9);
+}
+
+void Main_window::on_manager_click()
+{
+    controller.executeCmd(10);
+}
+
+void Main_window::on_orderstat_click()
+{
+    controller.executeCmd(11);
+}
+
+void Main_window::on_save_click()
+{
+    controller.executeCmd(12);
+}
+
+void Main_window::on_load_click()
+{
+    controller.executeCmd(13);
 }

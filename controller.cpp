@@ -631,6 +631,142 @@ void Controller::executeCmd(int cmd)
     delete dialog;
     }
 
+    if (cmd == 10)
+    {
+        Gtk::Dialog *dialog = new Gtk::Dialog();
+        dialog->set_title("Create Manager");
+
+    // NAME
+    Gtk::HBox b_name;
+
+    Gtk::Label l_name{"Name:"};
+    l_name.set_width_chars(15);
+    b_name.pack_start(l_name, Gtk::PACK_SHRINK);
+
+    Gtk::Entry e_name;
+    e_name.set_max_length(50);
+    b_name.pack_start(e_name, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK); 
+    
+        dialog->add_button("Cancle", 0);
+        dialog->add_button("OK", 1);
+        dialog->show_all();
+        int result = dialog->run();
+
+        dialog->close();       
+
+    }    
+
+    if (cmd == 11)
+    {
+        Gtk::Dialog *dialog = new Gtk::Dialog();
+        dialog->set_title("Order Status");
+
+        Gtk::HBox b_orderStat;
+
+        Gtk::Label l_orderStat{"Status:"};
+        l_orderStat.set_width_chars(15);
+        b_orderStat.pack_start(l_orderStat, Gtk::PACK_SHRINK);
+
+        Gtk::ComboBoxText c_orderStat;
+        c_orderStat.set_size_request(160);
+        c_orderStat.append("Unfilled");
+        c_orderStat.append("Filled");
+        c_orderStat.append("Paid");
+        c_orderStat.append("Canceled");
+        b_orderStat.pack_start(c_orderStat, Gtk::PACK_SHRINK);
+        dialog->get_vbox()->pack_start(b_orderStat, Gtk::PACK_SHRINK);
+
+        dialog->add_button("Cancel", 0);
+        dialog->add_button("OK", 1);
+        dialog->show_all();
+        int resultTopp = dialog->run();
+
+        dialog->close();
+        dialog->hide();        
+    }
+
+    if (cmd == 12)
+    {
+        Gtk::Dialog *dialog = new Gtk::Dialog();
+        dialog->set_title("Saved");
+
+        dialog->add_button("OK", 1);
+        dialog->show_all();
+        int resultTopp = dialog->run();
+
+        dialog->close();
+        dialog->hide(); 
+
+        int scoopsNum, containerNum, toppingNum, servingNum, serverNum, customerNum, orderNum, managerNum;
+        scoopsNum = manager.getScoops().size();
+        containerNum = manager.getContainers().size();
+        toppingNum = manager.getToppings().size();
+        //serverNum = manager.getServers().size();
+        //customerNum = manager.getCustomers().size();
+
+
+        ofstream myfile;
+        myfile.open ("default.txt");
+
+        //for scoops
+            for (int i = 0; i < scoopsNum; i++)
+            {
+                myfile << "scoop " << manager.scoopListing(i) << " " << manager.scoopDescription(i) << endl;
+            }
+
+        //for containers
+            for (int i = 0; i < containerNum; i++)
+            {
+                myfile << "container " << manager.containerListing(i) << endl;
+            }
+        //for toppings
+            for (int i = 0; i < toppingNum; i++)
+            {
+                myfile << "topping " << manager.toppingsListing(i) << endl;
+            }
+
+        myfile.close();
+    }
+
+    if (cmd == 13)
+    {
+        string line[50];
+
+        Gtk::Dialog *dialog = new Gtk::Dialog();
+        dialog->set_title("Loaded");
+
+        dialog->add_button("OK", 1);
+        dialog->show_all();
+        int resultTopp = dialog->run();
+
+        dialog->close();
+        dialog->hide(); 
+
+
+        ifstream myfile ("default.txt");
+        if (myfile.is_open())
+        {
+            int i = 0;
+            while ( getline (myfile,line[i]) )
+            {
+                i++;
+            }
+            myfile.close();
+        }
+        else
+        {
+            Gtk::Dialog *dialog = new Gtk::Dialog();
+            dialog->set_title("Unable to Load");
+
+            dialog->add_button("OK", 1);
+            dialog->show_all();
+            int resultTopp = dialog->run();
+
+            dialog->close();
+            dialog->hide();             
+        }
+    }
 
 
 }
