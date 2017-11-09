@@ -22,7 +22,7 @@ void Controller::executeCmd(int cmd)
   cin>>remainingStock;
   cin.ignore();
 
-  manager.addItem(Item(Name,Description,wholesaleCost,retailPrice,remainingStock));
+  emporium.addItem(Item(Name,Description,wholesaleCost,retailPrice,remainingStock));
   }
 
   if (cmd==2)
@@ -119,7 +119,7 @@ void Controller::executeCmd(int cmd)
     cc >> remainingStock;
 
 
-    manager.addScoop(Scoop(name,description,wholesaleCost,retailPrice,remainingStock));
+    emporium.addScoop(Scoop(name,description,wholesaleCost,retailPrice,remainingStock));
   }
 
   if (cmd==3)
@@ -215,7 +215,7 @@ void Controller::executeCmd(int cmd)
     stringstream cc(c);
     cc >> remainingStock;
 
-    manager.addToppings(Toppings(name,description,style,wholesaleCost,retailPrice,remainingStock));
+    emporium.addToppings(Toppings(name,description,style,wholesaleCost,retailPrice,remainingStock));
   }
   if (cmd==4)
   {
@@ -325,7 +325,7 @@ void Controller::executeCmd(int cmd)
     stringstream dd(d);
     dd >> maximumScoops;
 
-    manager.addContainer(Container(name,description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
+    emporium.addContainer(Container(name,description,wholesaleCost,retailPrice,remainingStock,maximumScoops));
   }
 
   if (cmd == 5)
@@ -416,7 +416,7 @@ void Controller::executeCmd(int cmd)
 
     stringstream aa(a);
     aa >> ID;
-     manager.addCustomer(Customer(name,ID,phoneNum));
+     emporium.addCustomer(Customer(name,ID,phoneNum));
   }
 
   if (cmd == 7)
@@ -479,7 +479,7 @@ void Controller::executeCmd(int cmd)
     stringstream aa(a);
     aa >> ID;
 
-     manager.addServer(Server(name,ID,phoneNum));
+     emporium.addServer(Server(name,ID,phoneNum));
   }
 
     if (cmd==8)         //Create Serving
@@ -502,9 +502,9 @@ void Controller::executeCmd(int cmd)
 
             Gtk::ComboBoxText c_container;
             c_container.set_size_request(160);
-            for(int i=0; i<manager.getContainers().size(); i++)
+            for(int i=0; i<emporium.getContainers().size(); i++)
             {
-                stringstream aa(manager.containerListing(i));
+                stringstream aa(emporium.containerListing(i));
                 aa>>conList;
                 c_container.append(conList);
             }
@@ -521,7 +521,7 @@ void Controller::executeCmd(int cmd)
         containerDia->hide();
         delete containerDia;
         container = c_container.get_active_row_number();
-        maxScoop = manager.getMaxScoops(container);
+        maxScoop = emporium.getMaxScoops(container);
         int flavor[maxScoop];
 
     // F L A V O R   D I A L O G
@@ -539,9 +539,9 @@ void Controller::executeCmd(int cmd)
 
                     Gtk::ComboBoxText c_flavor;
                     c_flavor.set_size_request(160);
-                    for(int i=0; i<manager.getScoops().size(); i++)
+                    for(int i=0; i<emporium.getScoops().size(); i++)
                     {
-                        stringstream bb(manager.scoopListing(i));
+                        stringstream bb(emporium.scoopListing(i));
                         bb >> scoList;
                         c_flavor.append(scoList);
                     }
@@ -557,7 +557,7 @@ void Controller::executeCmd(int cmd)
             flavorDia->hide();
             delete flavorDia;
             flavor[i] = c_flavor.get_active_row_number();
-            serScoop.push_back(manager.getScoops()[i]);
+            serScoop.push_back(emporium.getScoops()[i]);
         }
 
 
@@ -575,9 +575,9 @@ void Controller::executeCmd(int cmd)
 
         Gtk::ComboBoxText c_topping;
         c_topping.set_size_request(160);
-        for(int i=0; i<manager.getToppings().size(); i++)
+        for(int i=0; i<emporium.getToppings().size(); i++)
         {
-            stringstream cc(manager.toppingsListing(i));
+            stringstream cc(emporium.toppingsListing(i));
             cc >> topList;
             c_topping.append(topList);
         }
@@ -609,9 +609,9 @@ void Controller::executeCmd(int cmd)
         toppingDia->hide();
         delete toppingDia;
         topping = c_topping.get_active_row_number();
-        serTop.push_back(manager.getToppings()[topping]);
+        serTop.push_back(emporium.getToppings()[topping]);
 
-        manager.addServing(Serving(manager.getContainers()[container],serScoop,serTop));
+        emporium.addServing(Serving(emporium.getContainers()[container],serScoop,serTop));
     }
 
     if (cmd == 9)
@@ -620,7 +620,7 @@ void Controller::executeCmd(int cmd)
 
 
     Gtk::MessageDialog *dialog = new Gtk::MessageDialog("Current Servings");
-    dialog->set_secondary_text(manager.servingToString(),true);
+    dialog->set_secondary_text(emporium.servingToString(),true);
 
 
 

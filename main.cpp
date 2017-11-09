@@ -6,8 +6,8 @@ int main (int argc, char *argv[])
 {
   Glib::RefPtr<Gtk::Application> app =
     Gtk::Application::create(argc, argv, "edu.uta.cse1325.mice");
-Manager manager;
-Controller controller(manager);
+Emporium emporium;
+Controller controller(emporium);
   // Instance a Window
   Main_window win(controller);
 

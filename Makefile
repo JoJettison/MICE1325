@@ -5,8 +5,8 @@ rebuild: div clean main_window
 
 debug: CXXFLAGS += -g
 debug: rebuild
-main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o item.o customer.o  person.o server.o serving.o
-	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o customer.o  person.o server.o serving.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+main_window: main.o main_window.o container.o scoop.o toppings.o manager.o controller.o dialogs.o item.o customer.o  person.o server.o serving.o emporium.o
+	$(CXX) $(CXXFLAGS) -o mice main.o main_window.o container.o scoop.o toppings.o manager.o controller.o item.o customer.o  person.o server.o serving.o emporium.o `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 	./mice
 main.o: main.cpp main_window.h
 	$(CXX) $(CXXFLAGS) -c main.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
@@ -16,6 +16,8 @@ container.o: container.cpp container.h
 	$(CXX) $(CXXFLAGS) -c container.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 manager.o: manager.cpp manager.h
 	$(CXX) $(CXXFLAGS) -c manager.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
+emporium.o: emporium.cpp emporium.h
+	$(CXX) $(CXXFLAGS) -c emporium.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 controller.o: controller.cpp controller.h
 		$(CXX) $(CXXFLAGS) -c controller.cpp `/usr/bin/pkg-config gtkmm-3.0 --cflags --libs`
 scoop.o: scoop.cpp scoop.h

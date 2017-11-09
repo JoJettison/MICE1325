@@ -10,15 +10,16 @@
 #include "toppings.h"
 #include "serving.h"
 #include "manager.h"
+#include "emporium.h"
 #include <iostream>
 #include <string>
 
 class Controller {
   public:
-    Controller(Manager& mana) : manager(mana) { }
+    Controller(Emporium& empo) : emporium(empo) { }
     void executeCmd(int cmd);
     void help();
   private:
-    Manager& manager;
+    Emporium& emporium;
 };
 #endif
