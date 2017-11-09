@@ -14,7 +14,7 @@ class Server :public Person
     int fill();
     void replenishSup();
     string pType() override;
-    
+
 
   private:
     int orders;

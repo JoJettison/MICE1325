@@ -3,6 +3,9 @@
 
 #include <gtkmm.h>
 #include <sstream>
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
 #include "dialogs.h"
 #include "item.h"
 #include "scoop.h"
@@ -12,6 +15,8 @@
 #include "manager.h"
 #include <iostream>
 #include <string>
+
+using namespace std;
 
 class Controller {
   public:

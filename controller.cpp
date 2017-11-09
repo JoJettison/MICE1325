@@ -327,81 +327,29 @@ void Controller::executeCmd(int cmd)
 
   if (cmd == 5)
   {
-    int numServe;
+    string orderID, servings, server, customer;
 
-        Gtk::Dialog *orderNumDia = new Gtk::Dialog();
-        orderNumDia->set_title("Create Order");
+    Gtk::Dialog *dialog = new Gtk::Dialog();
+    dialog->set_title("Create Order");
 
-        Gtk::HBox b_numServe;
+    // ORDER ID
+    Gtk::HBox b_name;
 
-        Gtk::Label l_numServe{"How many servings:"};
-        l_numServe.set_width_chars(15);
-        b_numServe.pack_start(l_numServe, Gtk::PACK_SHRINK);
+    Gtk::Label l_name{"Order ID:"};
+    l_name.set_width_chars(15);
+    b_name.pack_start(l_name, Gtk::PACK_SHRINK);
 
-        Gtk::ComboBoxText c_numServe;
-        c_numServe.set_size_request(160);
-        //for(int i=0; i < servingList.size(); i++)
-        for(int i = 0; i < 10; i++)
-        {
-                int num;
-                num = i + 1;
-                stringstream aa;
-                aa << num;
-                string str = aa.str();
-                c_numServe.append(str);
-        }
-        b_numServe.pack_start(c_numServe, Gtk::PACK_SHRINK);
-        orderNumDia->get_vbox()->pack_start(b_numServe, Gtk::PACK_SHRINK);
+    Gtk::Entry e_name;
+    e_name.set_max_length(50);
+    b_name.pack_start(e_name, Gtk::PACK_SHRINK);
+    dialog->get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);
 
-        orderNumDia->add_button("Cancel", 0);
-        orderNumDia->add_button("OK", 1);
-        orderNumDia->show_all();
-        int resultOrderNum = orderNumDia->run();
+    dialog->add_button("Cancel", 0);
+    dialog->add_button("OK", 1);
+    dialog->show_all();
+    int result = dialog->run();
 
-        orderNumDia->close();
-        orderNumDia->hide();
-        numServe = c_numServe.get_active_row_number();
-        int order[numServe];
-        numServe++;
-
-        for (int i = 0; i < numServe; i++)
-        {
-            int numServings;
-            Gtk::Dialog *orderDia = new Gtk::Dialog();
-            orderDia->set_title("Create Serving");
-
-            Gtk::HBox b_order;
-
-            Gtk::Label l_order{"order:"};
-            l_order.set_width_chars(15);
-            b_order.pack_start(l_order, Gtk::PACK_SHRINK);
-
-            Gtk::ComboBoxText c_order;
-            c_order.set_size_request(160);
-            //for(int i=0; i < servingList.size(); i++)
-            for(int i = 0; i < 22; i++)
-            {
-                int num;
-                num = i + 1;
-                stringstream aa;
-                aa << num;
-                string str = aa.str();
-                c_order.append(str);
-            }
-
-            b_order.pack_start(c_order, Gtk::PACK_SHRINK);
-            orderDia->get_vbox()->pack_start(b_order, Gtk::PACK_SHRINK);
-
-            orderDia->add_button("Cancel", 0);
-            orderDia->add_button("OK", 1);
-            orderDia->show_all();
-            int resultOrde = orderDia->run();
-
-            orderDia->close();
-            orderDia->hide();
-            order[i] = c_order.get_active_row_number();            
-        }
-
+    dialog->close();
   }
 
   if (cmd == 6)
@@ -463,6 +411,7 @@ void Controller::executeCmd(int cmd)
 
     stringstream aa(a);
     aa >> ID;
+     manager.addCustomer(Customer(name,ID,phoneNum));
   }
 
   if (cmd == 7)
@@ -523,12 +472,16 @@ void Controller::executeCmd(int cmd)
 
     stringstream aa(a);
     aa >> ID;
+
+     manager.addServer(Server(name,ID,phoneNum));
   }
 
     if (cmd==8)         //Create Serving
     {
     int container, maxScoop, topping;
     string conList, scoList, topList, toppingQuantity;
+    vector<Scoop> serScoop;
+    vector<Toppings> serTop;
 
     // C O N T A I N E R   D I A L O G
     //////////////////////////////////
@@ -560,6 +513,7 @@ void Controller::executeCmd(int cmd)
 
         containerDia->close();
         containerDia->hide();
+        delete containerDia;
         container = c_container.get_active_row_number();
         maxScoop = manager.getMaxScoops(container);
         int flavor[maxScoop];
@@ -569,7 +523,7 @@ void Controller::executeCmd(int cmd)
         for(int i = 0; i < maxScoop; i++)
         {
             Gtk::Dialog *flavorDia = new Gtk::Dialog();
-            flavorDia->set_title("Create Serving");    
+            flavorDia->set_title("Create Serving");
 
                 Gtk::HBox b_flavor;
 
@@ -584,7 +538,7 @@ void Controller::executeCmd(int cmd)
                         stringstream bb(manager.scoopListing(i));
                         bb >> scoList;
                         c_flavor.append(scoList);
-                    }             
+                    }
                 b_flavor.pack_start(c_flavor, Gtk::PACK_SHRINK);
                 flavorDia->get_vbox()->pack_start(b_flavor, Gtk::PACK_SHRINK);
 
@@ -595,7 +549,9 @@ void Controller::executeCmd(int cmd)
 
             flavorDia->close();
             flavorDia->hide();
+            delete flavorDia;
             flavor[i] = c_flavor.get_active_row_number();
+            serScoop.push_back(manager.getScoops()[i]);
         }
 
 
@@ -643,19 +599,20 @@ void Controller::executeCmd(int cmd)
         toppingDia->show_all();
         int resultTopp = toppingDia->run();
 
-        toppingDia->close(); 
-        //toppingDia->hide(); 
+        toppingDia->close();
+        toppingDia->hide();
         delete toppingDia;
         topping = c_topping.get_active_row_number();
+        serTop.push_back(manager.getToppings()[topping]);
 
+        manager.addServing(Serving(manager.getContainers()[container],serScoop,serTop));
     }
 
     if (cmd == 9)
     {
     string container, flavor, topping, toppingQuantity, phoneNum, orderID;
 
-    Gtk::Dialog *dialog = new Gtk::Dialog();
-    dialog->set_title("Display Serving");
+    Gtk::MessageDialog *dialog = new Gtk::MessageDialog("Current Servings");
 
     dialog->add_button("Cancel", 0);
     dialog->add_button("OK", 1);
@@ -689,6 +646,118 @@ void Controller::executeCmd(int cmd)
 
         dialog->close();       
 
+    }    
+
+    if (cmd == 11)
+    {
+        Gtk::Dialog *dialog = new Gtk::Dialog();
+        dialog->set_title("Order Status");
+
+        Gtk::HBox b_orderStat;
+
+        Gtk::Label l_orderStat{"Status:"};
+        l_orderStat.set_width_chars(15);
+        b_orderStat.pack_start(l_orderStat, Gtk::PACK_SHRINK);
+
+        Gtk::ComboBoxText c_orderStat;
+        c_orderStat.set_size_request(160);
+        c_orderStat.append("Unfilled");
+        c_orderStat.append("Filled");
+        c_orderStat.append("Paid");
+        c_orderStat.append("Canceled");
+        b_orderStat.pack_start(c_orderStat, Gtk::PACK_SHRINK);
+        dialog->get_vbox()->pack_start(b_orderStat, Gtk::PACK_SHRINK);
+
+        dialog->add_button("Cancel", 0);
+        dialog->add_button("OK", 1);
+        dialog->show_all();
+        int resultTopp = dialog->run();
+
+        dialog->close();
+        dialog->hide();        
     }
+
+    if (cmd == 12)
+    {
+        Gtk::Dialog *dialog = new Gtk::Dialog();
+        dialog->set_title("Saved");
+
+        dialog->add_button("OK", 1);
+        dialog->show_all();
+        int resultTopp = dialog->run();
+
+        dialog->close();
+        dialog->hide(); 
+
+        int scoopsNum, containerNum, toppingNum, servingNum, serverNum, customerNum, orderNum, managerNum;
+        scoopsNum = manager.getScoops().size();
+        containerNum = manager.getContainers().size();
+        toppingNum = manager.getToppings().size();
+        //serverNum = manager.getServers().size();
+        //customerNum = manager.getCustomers().size();
+
+
+        ofstream myfile;
+        myfile.open ("default.txt");
+
+        //for scoops
+            for (int i = 0; i < scoopsNum; i++)
+            {
+                myfile << "scoop " << manager.scoopListing(i) << " " << manager.scoopDescription(i) << endl;
+            }
+
+        //for containers
+            for (int i = 0; i < containerNum; i++)
+            {
+                myfile << "container " << manager.containerListing(i) << endl;
+            }
+        //for toppings
+            for (int i = 0; i < toppingNum; i++)
+            {
+                myfile << "topping " << manager.toppingsListing(i) << endl;
+            }
+
+        myfile.close();
+    }
+
+    if (cmd == 13)
+    {
+        string line[50];
+
+        Gtk::Dialog *dialog = new Gtk::Dialog();
+        dialog->set_title("Loaded");
+
+        dialog->add_button("OK", 1);
+        dialog->show_all();
+        int resultTopp = dialog->run();
+
+        dialog->close();
+        dialog->hide(); 
+
+
+        ifstream myfile ("default.txt");
+        if (myfile.is_open())
+        {
+            int i = 0;
+            while ( getline (myfile,line[i]) )
+            {
+                i++;
+            }
+            myfile.close();
+        }
+        else
+        {
+            Gtk::Dialog *dialog = new Gtk::Dialog();
+            dialog->set_title("Unable to Load");
+
+            dialog->add_button("OK", 1);
+            dialog->show_all();
+            int resultTopp = dialog->run();
+
+            dialog->close();
+            dialog->hide();             
+        }
+    }
+
 
 }
