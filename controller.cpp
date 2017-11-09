@@ -103,6 +103,7 @@ void Controller::executeCmd(int cmd)
     int result = dialog->run();
 
     dialog->close();
+    delete dialog;
 
     name = e_name.get_text();
     description = e_description.get_text();
@@ -199,6 +200,7 @@ void Controller::executeCmd(int cmd)
     int result = dialog->run();
 
     dialog->close();
+    delete dialog;
 
     name = e_name.get_text();
     description = e_description.get_text();
@@ -305,6 +307,7 @@ void Controller::executeCmd(int cmd)
     int result = dialog->run();
 
     dialog->close();
+    delete dialog;
 
     name = e_name.get_text();
     description = e_description.get_text();
@@ -350,6 +353,7 @@ void Controller::executeCmd(int cmd)
     int result = dialog->run();
 
     dialog->close();
+    delete dialog;
   }
 
   if (cmd == 6)
@@ -404,6 +408,7 @@ void Controller::executeCmd(int cmd)
     int result = dialog->run();
 
     dialog->close();
+    delete dialog;
 
     name = e_name.get_text();
     phoneNum = e_phoneNum.get_text();
@@ -465,6 +470,7 @@ void Controller::executeCmd(int cmd)
     int result = dialog->run();
 
     dialog->close();
+    delete dialog;
 
     name = e_name.get_text();
     phoneNum = e_phoneNum.get_text();
@@ -513,6 +519,7 @@ void Controller::executeCmd(int cmd)
 
         containerDia->close();
         containerDia->hide();
+        delete containerDia;
         container = c_container.get_active_row_number();
         maxScoop = manager.getMaxScoops(container);
         int flavor[maxScoop];
@@ -548,6 +555,7 @@ void Controller::executeCmd(int cmd)
 
             flavorDia->close();
             flavorDia->hide();
+            delete flavorDia;
             flavor[i] = c_flavor.get_active_row_number();
             serScoop.push_back(manager.getScoops()[i]);
         }
@@ -599,6 +607,7 @@ void Controller::executeCmd(int cmd)
 
         toppingDia->close();
         toppingDia->hide();
+        delete toppingDia;
         topping = c_topping.get_active_row_number();
         serTop.push_back(manager.getToppings()[topping]);
 
@@ -618,6 +627,7 @@ void Controller::executeCmd(int cmd)
     dialog->run();
 
     dialog->close();
+    delete dialog;
     }
 
 
