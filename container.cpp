@@ -1,19 +1,10 @@
 #include "container.h"
-#include <iostream>
-#include <string>
-using namespace std;
 
-Container::Container(string Name, string Description, double wholesaleCost, double retailPrice,int RemainingStock, int maximumScoops):
-Item(Name,Description,wholesaleCost,retailPrice, RemainingStock),maxScoops{maximumScoops} { }
+namespace Mice {
 
-
-string Container::type()
-{
- return "Container";
-}
-
-
-int Container::maximScoops()
-{
- return maxScoops;
+Container::Container(std::string name, std::string description, double cost, double price,
+              int max_scoops)
+          : Item(name, description, cost, price), _max_scoops{max_scoops} { }
+std::string Container::type() const {return "Container";}
+int Container::max_scoops() const {return _max_scoops;}
 }

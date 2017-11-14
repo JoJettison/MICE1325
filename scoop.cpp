@@ -1,12 +1,9 @@
 #include "scoop.h"
-#include <string>
-#include <iostream>
-using namespace std;
 
-Scoop::Scoop(string Name, string Description, double wholesaleCost, double retailPrice, int RemainingStock)
- :Item(Name,Description,wholesaleCost,retailPrice, RemainingStock){ }
+namespace Mice {
 
- string Scoop::type()
- {
-   return "Scoop";
- }
+Scoop::Scoop(std::string name, std::string description, double cost, double price)
+      : Item(name, description, cost, price) { }
+std::string Scoop::type() const {return "Scoop";}
+
+}
