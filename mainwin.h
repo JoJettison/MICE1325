@@ -27,7 +27,10 @@ class Mainwin : public Gtk::Window
         void on_manager_click();                       // Select manager role
         void on_server_click();                        // Select server role
         void on_customer_click();                      // Select customer role
-        void on_salary_click();
+        void on_salary_click();                        // Set Server's salary
+        void on_profit_loss_click();                   // View Profit & Loss Report
+        void on_inventory_click();                     // View Inventory Report
+        void on_server_report_click();                 // View Server Report
         void on_about_click();                         // Display About dialog
         void on_quit_click();                          // Exit the program
         void on_easteregg_click();                     // TODO: For test only
@@ -39,6 +42,10 @@ class Mainwin : public Gtk::Window
         Gtk::MenuItem *menuitem_customer;
         Gtk::MenuItem *menuitem_item;
         Gtk::MenuItem *menuitem_server;
+        Gtk::MenuItem *menuitem_salary;
+        Gtk::MenuItem *menuitem_profit_loss;
+        Gtk::MenuItem *menuitem_inventory;
+        Gtk::MenuItem *menuitem_server_report;
 
         Gtk::ToolButton *new_emporium_button;
         Gtk::ToolButton *create_order_button;

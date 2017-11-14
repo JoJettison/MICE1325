@@ -12,6 +12,7 @@ namespace Mice {
         double pay_server();           // Returns server's salary for this paycheck
         int num_orders();              // Returns number of orders filled by this server
         int salary();                  // Returns salary of this server per hour
+        void set_salary(double s);     // Set new salary for server
         static const int PAY_PERIOD = 10; // Number of orders between paychecks
         static const int RESTOCK_PAY = 2; // Equivalent number of orders per restock
       private:

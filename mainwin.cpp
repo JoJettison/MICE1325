@@ -117,6 +117,44 @@ Mainwin::Mainwin() {
     menuitem_customer_role->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_customer_click));
     rolemenu->append(*menuitem_customer_role);
 
+    //     M A N A G E 
+    // Create a Manage menu and add to the menu bar
+    Gtk::MenuItem *menuitem_manage_stuff = Gtk::manage(new Gtk::MenuItem("_Manage", true));
+    menubar->append(*menuitem_manage_stuff);
+    Gtk::Menu *managemenu = Gtk::manage(new Gtk::Menu());
+    menuitem_manage_stuff->set_submenu(*managemenu);
+
+    //           S E R V E R    S A L A R Y
+    // Append Server Salary to the Manage menu
+    Gtk::MenuItem *menuitem_salary = Gtk::manage(new Gtk::MenuItem("Salary", true));
+    menuitem_salary->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_salary_click));
+    managemenu->append(*menuitem_salary);
+
+    //     R E P O R T S
+    // Create a Reports menu and add to the menu bar
+    Gtk::MenuItem *menuitem_reports = Gtk::manage(new Gtk::MenuItem("_Reports", true));
+    menubar->append(*menuitem_reports);
+    Gtk::Menu *reportmenu = Gtk::manage(new Gtk::Menu());
+    menuitem_reports->set_submenu(*reportmenu);
+
+    //           P R O F I T    &    L O S S
+    // Append Profit and Loss to the Reports menu
+    Gtk::MenuItem *menuitem_profit_loss = Gtk::manage(new Gtk::MenuItem("Profit & Loss", true));
+    menuitem_profit_loss->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_profit_loss_click));
+    reportmenu->append(*menuitem_profit_loss);
+
+    //           I N V E N T O R Y
+    // Append Inventory to the Reports menu
+    Gtk::MenuItem *menuitem_inventory = Gtk::manage(new Gtk::MenuItem("Inventory", true));
+    menuitem_inventory->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_inventory_click));
+    reportmenu->append(*menuitem_inventory);
+
+    //           S E R V E R    R E P O R T
+    // Append Server to the Reports menu
+    Gtk::MenuItem *menuitem_server_report = Gtk::manage(new Gtk::MenuItem("Server", true));
+    menuitem_server_report->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_server_report_click));
+    reportmenu->append(*menuitem_server_report);    
+
     //     H E L P
     // Create a Help menu and add to the menu bar
     Gtk::MenuItem *menuitem_help = Gtk::manage(new Gtk::MenuItem("_Help", true));
@@ -130,18 +168,6 @@ Mainwin::Mainwin() {
     menuitem_about->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_about_click));
     helpmenu->append(*menuitem_about);
 
-    //     M A N A G E 
-    // Create a Manage menu and add to the menu bar
-    Gtk::MenuItem *menuitem_manage_stuff = Gtk::manage(new Gtk::MenuItem("_Manage", true));
-    menubar->append(*menuitem_manage_stuff);
-    Gtk::Menu *managemenu = Gtk::manage(new Gtk::Menu());
-    menuitem_manage_stuff->set_submenu(*managemenu);
-
-    //           S E R V E R    S A L A R Y
-    // Append Server Salary to the Manage menu
-    Gtk::MenuItem *menuitem_salary = Gtk::manage(new Gtk::MenuItem("Salary", true));
-    menuitem_salary->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_salary_click));
-    managemenu->append(*menuitem_salary);
 
     // /////////////
     // T O O L B A R
@@ -202,6 +228,11 @@ void Mainwin::on_all_click() {
     menuitem_customer->set_sensitive(true);
     menuitem_item->set_sensitive(true);
     menuitem_server->set_sensitive(true);
+    //menuitem_salary->set_sensitive(true);
+
+    /*menuitem_profit_loss->set_sensitive(true);
+    menuitem_inventory->set_sensitive(true);
+    menuitem_server_report->set_sensitive(true);*/
 
     new_emporium_button->set_sensitive(menuitem_new->get_sensitive());
     create_order_button->set_sensitive(menuitem_order->get_sensitive());
@@ -216,6 +247,11 @@ void Mainwin::on_owner_click() {
     menuitem_customer->set_sensitive(true);
     menuitem_item->set_sensitive(true);
     menuitem_server->set_sensitive(true);
+    /*menuitem_salary->set_sensitive(true);
+
+    menuitem_profit_loss->set_sensitive(true);
+    menuitem_inventory->set_sensitive(true);
+    menuitem_server_report->set_sensitive(true);*/
 
     new_emporium_button->set_sensitive(menuitem_new->get_sensitive());
     create_order_button->set_sensitive(menuitem_order->get_sensitive());
@@ -230,6 +266,11 @@ void Mainwin::on_manager_click() {
     menuitem_customer->set_sensitive(true);
     menuitem_item->set_sensitive(true);
     menuitem_server->set_sensitive(true);
+    /*menuitem_salary->set_sensitive(true);
+
+    menuitem_profit_loss->set_sensitive(true);
+    menuitem_inventory->set_sensitive(true);
+    menuitem_server_report->set_sensitive(true);*/
 
     new_emporium_button->set_sensitive(menuitem_new->get_sensitive());
     create_order_button->set_sensitive(menuitem_order->get_sensitive());
@@ -244,6 +285,11 @@ void Mainwin::on_server_click() {
     menuitem_customer->set_sensitive(true);
     menuitem_item->set_sensitive(false);
     menuitem_server->set_sensitive(false);
+    /*menuitem_salary->set_sensitive(false);
+
+    menuitem_profit_loss->set_sensitive(false);
+    menuitem_inventory->set_sensitive(false);
+    menuitem_server_report->set_sensitive(false);*/
 
     new_emporium_button->set_sensitive(menuitem_new->get_sensitive());
     create_order_button->set_sensitive(menuitem_order->get_sensitive());
@@ -258,6 +304,11 @@ void Mainwin::on_customer_click() {
     menuitem_customer->set_sensitive(false);
     menuitem_item->set_sensitive(false);
     menuitem_server->set_sensitive(false);
+    /*menuitem_salary->set_sensitive(false);
+
+    menuitem_profit_loss->set_sensitive(false);
+    menuitem_inventory->set_sensitive(false);
+    menuitem_server_report->set_sensitive(false);*/
 
     new_emporium_button->set_sensitive(menuitem_new->get_sensitive());
     create_order_button->set_sensitive(menuitem_order->get_sensitive());
