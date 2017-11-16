@@ -18,3 +18,17 @@ void Mainwin::on_profit_click(){
   dialog.run();
   dialog.close();
 }
+
+void Mainwin::on_cusre_click(){
+  std::stringstream cu;
+    emporium.store_persons(_servers, _customers);
+  for(int i=0; i<_customers.size(); i++){
+    cu<<_customers[i]<<std::endl;
+  }
+
+  Gtk::MessageDialog dialog{*this, "Customer report:"};
+  dialog.set_secondary_text(cu.str(), true);
+  dialog.run();
+  dialog.close();
+
+}
