@@ -68,7 +68,7 @@ Mainwin::Mainwin() {
     menuitem_customer->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_create_customer_click));
     createmenu->append(*menuitem_customer);
 
-    //         I T E M 
+    //         I T E M
     // (Owner, Manager) “Create a New Container, Ice Cream Flavor, or Topping” Append Item to the Create menu
     menuitem_item = Gtk::manage(new Gtk::MenuItem("_Item...", true));
     menuitem_item->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_create_item_click));
@@ -117,6 +117,19 @@ Mainwin::Mainwin() {
     menuitem_customer_role->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_customer_click));
     rolemenu->append(*menuitem_customer_role);
 
+    //    R E P O R T
+    // Create a Report menu and add to the menu bar
+    Gtk::MenuItem *menuitem_report = Gtk::manage(new Gtk::MenuItem("_Report", true));
+    menubar->append(*menuitem_report);
+    Gtk::Menu *reportmenu = Gtk::manage(new Gtk::Menu());
+    menuitem_report->set_submenu(*reportmenu);
+
+    //          P R O F I T
+    // Append profit to the Report menu
+    Gtk::MenuItem *menuitem_profit = Gtk::manage(new Gtk::MenuItem("Profit", true));
+    menuitem_profit->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_profit_click));
+    reportmenu->append(*menuitem_profit);
+
     //     H E L P
     // Create a Help menu and add to the menu bar
     Gtk::MenuItem *menuitem_help = Gtk::manage(new Gtk::MenuItem("_Help", true));
@@ -130,7 +143,7 @@ Mainwin::Mainwin() {
     menuitem_about->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_about_click));
     helpmenu->append(*menuitem_about);
 
-    //     M A N A G E 
+    //     M A N A G E
     // Create a Manage menu and add to the menu bar
     Gtk::MenuItem *menuitem_manage_stuff = Gtk::manage(new Gtk::MenuItem("_Manage", true));
     menubar->append(*menuitem_manage_stuff);
@@ -258,9 +271,9 @@ void Mainwin::on_customer_click() {
     menuitem_customer->set_sensitive(false);
     menuitem_item->set_sensitive(false);
     menuitem_server->set_sensitive(false);
+    //menuitem_profit->set_sensitive(false);
 
     new_emporium_button->set_sensitive(menuitem_new->get_sensitive());
     create_order_button->set_sensitive(menuitem_order->get_sensitive());
     create_item_button->set_sensitive(menuitem_item->get_sensitive());
 }
-

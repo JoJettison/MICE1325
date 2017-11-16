@@ -11,7 +11,7 @@ namespace Mice {
         bool restock_and_pay();        // True if server was paid for this restock
         double pay_server();           // Returns server's salary for this paycheck
         int num_orders();              // Returns number of orders filled by this server
-        int salary();                  // Returns salary of this server per hour
+        double salary();                  // Returns salary of this server per hour
         static const int PAY_PERIOD = 10; // Number of orders between paychecks
         static const int RESTOCK_PAY = 2; // Equivalent number of orders per restock
       private:

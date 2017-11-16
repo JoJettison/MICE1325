@@ -9,7 +9,7 @@ namespace Mice {
         : _customer{customer}, _id{_next_id++}, _state{Order_state::Unfilled} { }
     void Order::add_serving(Serving serving) {_servings.push_back(serving);}
     std::vector<Serving> Order::servings() const {return _servings;}
-
+//STATE MACHINE
     void Order::fill(Server server) {
         server.fill_order_and_pay();
         _state= Order_state::Filled;
@@ -23,6 +23,7 @@ namespace Mice {
     }
 
     int Order::id() const {return _id;}
+
     double Order::cost() const {
       double cs;
       for(int i=0; i<_servings.size(); i++){

@@ -31,6 +31,11 @@ class Mainwin : public Gtk::Window
         void on_salary_click();
         void on_about_click();                         // Display About dialog
         void on_quit_click();                          // Exit the program
+        void on_profit_click();
+        void on_cusre_click();
+        void on_invre_click();
+        void on_servre_click();
+        void on_ordrep_click();
         void on_easteregg_click();                     // TODO: For test only
     private:
         Gtk::MenuItem *menuitem_new;
@@ -40,6 +45,7 @@ class Mainwin : public Gtk::Window
         Gtk::MenuItem *menuitem_customer;
         Gtk::MenuItem *menuitem_item;
         Gtk::MenuItem *menuitem_server;
+        Gtk::MenuItem *menuitem_profit;
 
         Gtk::ToolButton *new_emporium_button;
         Gtk::ToolButton *create_order_button;
