@@ -42,6 +42,12 @@ Mainwin::Mainwin() {
     menuitem_easteregg->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_easteregg_click));
     filemenu->append(*menuitem_easteregg);
 
+    //         V I E W   I M A G E S
+    // Append View Images to the File menu
+    menuitem_view_images = Gtk::manage(new Gtk::MenuItem("_View Images", true));
+    menuitem_view_images->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_viewimages_click));
+    filemenu->append(*menuitem_view_images);
+
     //         Q U I T
     // Append Quit to the File menu
     menuitem_quit = Gtk::manage(new Gtk::MenuItem("_Quit", true));

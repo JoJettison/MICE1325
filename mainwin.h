@@ -30,6 +30,7 @@ class Mainwin : public Gtk::Window
         void on_customer_click();                      // Select customer role
         void on_salary_click();
         void on_about_click();                         // Display About dialog
+        void on_viewimages_click();
         void on_quit_click();                          // Exit the program
         void on_profit_click();
         void on_cusre_click();
@@ -47,6 +48,7 @@ class Mainwin : public Gtk::Window
         Gtk::MenuItem *menuitem_server;
         Gtk::MenuItem *menuitem_profit;
         Gtk::MenuItem *menuitem_custrep;
+        Gtk::MenuItem *menuitem_view_images;
 
         Gtk::ToolButton *new_emporium_button;
         Gtk::ToolButton *create_order_button;

@@ -15,4 +15,7 @@ bool Server::restock_and_pay() {
 double Server::pay_server() { }
 int Server::num_orders() {return _num_orders;}
 double Server::salary() {return _salary;}
+void Server::set_salary(double s) {
+	_salary = s;
+}
 }
