@@ -57,13 +57,12 @@ class Mainwin : public Gtk::Window
              std::string title);                       // Select from a list of strings
         void on_create_person_click(std::string role); // Create a new person
 
-        std::vector<Mice::Container> _containers;      // All defined containers
-        std::vector<Mice::Scoop> _scoops;              // All defined scoops
-        std::vector<Mice::Topping> _toppings;          // All defined toppings
-        std::vector<Mice::Order> _orders;              // All defined orders
-        std::vector<Mice::Server> _servers;            // All defined servers
-        std::vector<Mice::Customer> _customers;        // All defined customers
-
         Mice::Emporium emporium;
+       std::vector<Mice::Container> _containers;      // All defined containers
+       std::vector<Mice::Scoop> _scoops;              // All defined scoops
+       std::vector<Mice::Topping> _toppings;          // All defined toppings
+       std::vector<Mice::Order> _orders;              // All defined orders
+       std::vector<Mice::Server> _servers;            // All defined servers
+       std::vector<Mice::Customer> _customers;        // All defined customers
 };
 #endif
