@@ -51,7 +51,7 @@ void Mainwin::on_create_item_click() {
     else dialog.set_title("Create Topping");
     dialog.set_transient_for(*this);
 
-    // Name 
+    // Name
     Gtk::HBox b_name;
 
     Gtk::Label l_name{"Name:"};
@@ -166,7 +166,7 @@ void Mainwin::on_create_item_click() {
             valid_data = false;
         }
     }
-        
+
     // Instance item
     if (type == CONTAINER) {
         Mice::Container c{e_name.get_text(), e_desc.get_text(), d_cost, d_price, i_max_scoops};
@@ -178,6 +178,6 @@ void Mainwin::on_create_item_click() {
         _toppings.push_back(
             Mice::Topping{e_name.get_text(), e_desc.get_text(), d_cost, d_price, 0});
     }
-    
+
     dialog.close();
 }

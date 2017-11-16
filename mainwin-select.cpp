@@ -28,7 +28,7 @@ int Mainwin::select_scoop() {
 }
 
 int Mainwin::select_topping() {
-    if (_toppings.size() == 0) {
+    if (_containers.size() == 0) {
         Gtk::MessageDialog dialog{*this, "At least 1 topping must be created first"};
         dialog.run();
         dialog.close();

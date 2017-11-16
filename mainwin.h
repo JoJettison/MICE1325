@@ -8,6 +8,7 @@
 #include "order.h"
 #include "server.h"
 #include "customer.h"
+#include "emporium.h"
 #include <gtkmm.h>
 #include <string>
 
@@ -43,7 +44,7 @@ class Mainwin : public Gtk::Window
         Gtk::ToolButton *new_emporium_button;
         Gtk::ToolButton *create_order_button;
         Gtk::ToolButton *create_item_button;
-        
+
         void create_order();                           // Create a new order
         Mice::Serving create_serving();                // Create a new serving
         int select_container();                        // Select a container index
@@ -52,7 +53,7 @@ class Mainwin : public Gtk::Window
         int select_customer();                         // Select a customer index
         int select_server();                           // Select a server index
         int select_from_vector
-            (std::vector<std::string> names, 
+            (std::vector<std::string> names,
              std::string title);                       // Select from a list of strings
         void on_create_person_click(std::string role); // Create a new person
 
@@ -62,6 +63,7 @@ class Mainwin : public Gtk::Window
         std::vector<Mice::Order> _orders;              // All defined orders
         std::vector<Mice::Server> _servers;            // All defined servers
         std::vector<Mice::Customer> _customers;        // All defined customers
-};
-#endif 
 
+        Mice::Emporium emporium;
+};
+#endif

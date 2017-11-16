@@ -16,7 +16,7 @@ void Mainwin::on_create_person_click(std::string role) {
 
     Gtk::Dialog dialog{"Create " + role, *this};
 
-    // Name 
+    // Name
     Gtk::HBox b_name;
 
     Gtk::Label l_name{"Name:"};
@@ -118,7 +118,7 @@ void Mainwin::on_create_person_click(std::string role) {
             }
         }
     }
-        
+
     // Instance person
     if (role == "Server") {
         Mice::Server c{e_name.get_text(), e_id.get_text(), e_phone.get_text(), d_salary};
@@ -127,6 +127,6 @@ void Mainwin::on_create_person_click(std::string role) {
         Mice::Customer c{e_name.get_text(), e_id.get_text(), e_phone.get_text()};
         _customers.push_back(c);
     }
-    
+
     dialog.close();
 }

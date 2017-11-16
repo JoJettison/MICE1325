@@ -18,7 +18,7 @@ Mice::Serving Mainwin::create_serving() {
     }
     if (has_no_scoops) throw std::runtime_error("Canceled");
 
-    if (_toppings.size() > 0) {
+    if (_containers.size() > 0) {
         while (true) {
             int topping = select_topping();
             if (topping == -1) break;

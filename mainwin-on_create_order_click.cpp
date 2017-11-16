@@ -19,7 +19,7 @@ void Mainwin::on_create_order_click() {
     // Select a server or quit
     int server = select_server();
     if (server < 0) return;
-    
+
     // Add servings until the order is complete
     Mice::Order order{_customers[customer]};
     int id = 0;
