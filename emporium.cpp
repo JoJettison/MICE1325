@@ -12,7 +12,7 @@ Emporium::Emporium(std::istream& ist) {
     std::getline(ist, header2);
     if (header1 != "MICE") throw std::runtime_error("NOT an Emporium file");
     if (header2 != "0.1") throw std::runtime_error("Incompatible file version");
- 
+
     std::getline(ist, header1); // header
     std::getline(ist, header2);
     if (header1 != "#") throw std::runtime_error("No Emporium records in file");
@@ -56,6 +56,15 @@ void Emporium::save(std::ostream& ost) {
 
 std::string Emporium::name() {return _name;}
 double Emporium::cash_register() {return _cash_register;}
+double Emporium::order_profit()
+{
+  double pf;
+  for(int i=0; i<_orders.size(); i++){
+    pf += _orders[i].price() - _orders[i].cost()+_servers[i].salary();
+  }
+  return pf;
+
+}
 void Emporium::debit(double amount) {_cash_register -= amount;}
 void Emporium::credit(double amount) {_cash_register += amount;}
 int Emporium::next_id() {return ++_id;}

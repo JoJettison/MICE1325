@@ -7,9 +7,9 @@ namespace Mice {
       public:
         Person(std::string name, std::string id, std::string phone);
         Person();
-        std::string name();
-        std::string id();
-        std::string phone();
+        std::string name() const;
+        std::string id() const;
+        std::string phone() const;
         bool is_active();
         void set_active(bool active);
       protected:
@@ -20,4 +20,5 @@ namespace Mice {
     };
 }
 
+std::ostream& operator<<(std::ostream& os, const Mice::Person& person);
 #endif

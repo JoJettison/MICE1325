@@ -80,7 +80,7 @@ Mainwin::Mainwin() {
     menuitem_customer->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_create_customer_click));
     createmenu->append(*menuitem_customer);
 
-    //         I T E M 
+    //         I T E M
     // (Owner, Manager) “Create a New Container, Ice Cream Flavor, or Topping” Append Item to the Create menu
     menuitem_item = Gtk::manage(new Gtk::MenuItem("_Item...", true));
     menuitem_item->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_create_item_click));
@@ -167,6 +167,34 @@ Mainwin::Mainwin() {
     Gtk::MenuItem *menuitem_customer_role = Gtk::manage(new Gtk::MenuItem("Customer", true));
     menuitem_customer_role->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_customer_click));
     rolemenu->append(*menuitem_customer_role);
+
+    //    R E P O R T
+        // Create a Report menu and add to the menu bar
+        Gtk::MenuItem *menuitem_report = Gtk::manage(new Gtk::MenuItem("_Report", true));
+        menubar->append(*menuitem_report);
+        Gtk::Menu *reportmenu = Gtk::manage(new Gtk::Menu());
+        menuitem_report->set_submenu(*reportmenu);
+
+        //          P R O F I T
+        // Append profit to the Report menu
+        Gtk::MenuItem *menuitem_profit = Gtk::manage(new Gtk::MenuItem("Profit", true));
+        menuitem_profit->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_profit_click));
+        reportmenu->append(*menuitem_profit);
+
+        //          C U S T O M E R
+        // Append customer report to the Report menu
+        Gtk::MenuItem *menuitem_custrep = Gtk::manage(new Gtk::MenuItem("Customers", true));
+        menuitem_custrep->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_cusre_click));
+        reportmenu->append(*menuitem_custrep);
+
+        // Append server report to the Report menu
+        Gtk::MenuItem *menuitem_servrep = Gtk::manage(new Gtk::MenuItem("Servers", true));
+        menuitem_servrep->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_servre_click));
+        reportmenu->append(*menuitem_servrep);
+        // Append Order report to the report menu
+        Gtk::MenuItem *menuitem_ordrep = Gtk::manage(new Gtk::MenuItem("Orders", true));
+        menuitem_ordrep->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_ordrep_click));
+        reportmenu->append(*menuitem_ordrep);
 
     //     H E L P
     // Create a Help menu and add to the menu bar
@@ -330,4 +358,3 @@ void Mainwin::on_customer_click() {
     create_order_button->set_sensitive(menuitem_order->get_sensitive());
     create_item_button->set_sensitive(menuitem_item->get_sensitive());
 }
-

@@ -23,7 +23,8 @@ class Emporium {
 
         std::string name();
         double cash_register();
-        void debit(double amount); 
+        double order_profit();
+        void debit(double amount);
         void credit(double amount);
         int next_id();
 
@@ -62,5 +63,4 @@ class Emporium {
 };
 
 }
-#endif 
-
+#endif
