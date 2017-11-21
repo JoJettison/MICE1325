@@ -1,18 +1,17 @@
-#ifndef CUSTOMER_H
-#define CUSTOMER_H
+#ifndef _CUSTOMER_H
+#define _CUSTOMER_H
 #include "person.h"
 #include <string>
 #include <iostream>
-using namespace std;
+#include <fstream>
 
-class Customer: public Person
-{
-	public:
-		Customer(string Name, int IDcode, string phoneNum);
+namespace Mice {
+    class Customer : public Person {
+      public:
+        Customer(std::string name, std::string id, std::string phone);
+        Customer(std::istream& ist);
+        void save(std::ostream& ost);
+    };
+}
 
-	private:
-		string name;
-		int id;
-		string pnum;
-};
 #endif

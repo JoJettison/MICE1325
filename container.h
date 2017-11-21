@@ -1,22 +1,23 @@
-#ifndef CONTAINER_H
-#define CONTAINER_H
-#include <iostream>
+#ifndef _CONTAINER_H
+#define _CONTAINER_H
+
 #include "item.h"
-using namespace std;
+#include <iostream>
+#include <fstream>
 
-class Container: public Item
-{
-public:
-	Container (string Name, string Description, double wholesaleCost, double retailPrice,int RemainingStock, int maximumScoops);
-	string type() override;
-	int maximScoops();
+namespace Mice {
 
-private:
-	string name;
-	string desc;
-	double wholeCost;
-	double retPri;
-	int remStock;
-	int maxScoops;
+class Container : public Item {
+  public:
+    Container(std::string name, std::string description, double cost, double price,
+              int max_scoops);
+    Container(std::istream& ist);
+    void save(std::ostream& ost);
+    std::string type() const override;
+    int max_scoops() const;
+  private:
+    int _max_scoops;
 };
+
+}
 #endif

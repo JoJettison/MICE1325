@@ -1,23 +1,23 @@
-#ifndef PERSON_H
-#define PERSON_H
+#ifndef _PERSON_H
+#define _PERSON_H
 #include <string>
-using namespace std;
 
-class Person
-{
-  public:
-    Person(string Name, int IDcode, string phoneNum);
-    string pname();
-    int idcode();
-    string phone();
-    bool status();
-    void switcher();
-    virtual string pType();
+namespace Mice {
+    class Person {
+      public:
+        Person(std::string name, std::string id, std::string phone);
+        Person();
+        std::string name();
+        std::string id();
+        std::string phone();
+        bool is_active();
+        void set_active(bool active);
+      protected:
+        std::string _name;
+        std::string _id;
+        std::string _phone;
+        bool _active;
+    };
+}
 
-  protected:
-    string name;
-    int id;
-    string pnum;
-    bool active;
-};
 #endif

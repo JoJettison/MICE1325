@@ -1,22 +1,19 @@
-#ifndef SCOOP_H
-#define SCOOP_H
-#include <iostream>
-#include <string>
+#ifndef _SCOOP_H
+#define _SCOOP_H
+
 #include "item.h"
-using namespace std;
+#include <iostream>
+#include <fstream>
 
-class Scoop :public Item
-{
-	public:
-		Scoop (string Name, string Description, double wholesaleCost, double retailPrice, int remainingStock);
-		string type() override;
+namespace Mice {
 
-
-	private:
-		string name;
-		string desc;
-		double wholeCost;
-		double retPri;
-		int remStock;
+class Scoop : public Item {
+  public:
+    Scoop(std::string name, std::string description, double cost, double price);
+    Scoop(std::istream& ist);
+    void save(std::ostream& ost);
+    std::string type() const override;
 };
+
+}
 #endif

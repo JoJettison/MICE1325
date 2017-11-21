@@ -1,42 +1,12 @@
 #include "person.h"
-#include <iostream>
-#include <string>
-using namespace std;
 
-Person::Person( string Name, int IDcode, string phoneNum):
-name{Name}, id{IDcode}, pnum{phoneNum}, active{true} { }
-
-void Person::switcher()
-{
-  if(active)
-  {
-    active=false;
-  }
-  else
-  {
-    active =true;
-  }
-}
-bool Person::status()
-{
-  return active;
-}
-string Person::pname()
-{
-  return name;
-}
-
-int Person::idcode()
-{
-  return id;
-}
-
-string Person::phone()
-{
-  return pnum;
-}
-
-string Person::pType()
-{
-  return "Person";
+namespace Mice {
+Person::Person(std::string name, std::string id, std::string phone)
+             : _name{name}, _id{id}, _phone{phone}, _active{true} { }
+Person::Person() : _name{""}, _id{""}, _phone{""}, _active{true} { }
+std::string Person::name() {return _name;}
+std::string Person::id() {return _id;}
+std::string Person::phone() {return _phone;}
+bool Person::is_active() {return _active;}
+void Person::set_active(bool active) {_active = active;}
 }
