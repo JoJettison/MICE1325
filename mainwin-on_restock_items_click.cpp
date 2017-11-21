@@ -1,4 +1,7 @@
 #include "mainwin.h"
+#include <iostream>
+#include <sstream>
+#include <string>
 #include <exception>
 #include <stdexcept>
 
@@ -69,22 +72,28 @@ void Mainwin::on_restock_items_click()
     // /////////////////////////////
     // Quantity of Item
 
-    Gtk::Dialog dialog_quantity{"Quantity Resotcked", *this};
+    Gtk::Dialog *dialog_quantity = new Gtk::Dialog();
+    dialog_quantity->set_title("Quantity Restocked");
 
-    Gtk::HBox b_quantity;
+    dialog_quantity->add_button("Cancel", 0);
+    dialog_quantity->add_button("OK", 1);
+    dialog_quantity->set_default_response(1);
 
-    Gtk::Label l_quantity{"Quantity:"};
-    l_quantity.set_width_chars(WIDTH);
-    b_quantity.pack_start(l_quantity, Gtk::PACK_SHRINK);
+    Gtk::Entry *entry = new Gtk::Entry{};
+    entry->set_text("Quantity:");
+    entry->set_max_length(50);
+    entry->show();
+    dialog_quantity->get_vbox()->pack_start(*entry);
 
-    Gtk::Entry e_quantity;
-    e_quantity.set_max_length(WIDTH*4);
-    b_quantity.pack_start(e_quantity, Gtk::PACK_SHRINK);
-    dialog_quantity.get_vbox()->pack_start(b_quantity, Gtk::PACK_SHRINK);   
+    int result = dialog_quantity->run();
+    std::string text = entry->get_text();
+    int quantity;
+    std::istringstream (text) >> quantity;
 
-    dialog_quantity.add_button("Cancel", 0);
-    dialog_quantity.add_button("OK", 1);
-    dialog_quantity.show_all();
+    dialog_quantity->close();
 
-    dialog_quantity.close();
+    delete entry;
+    delete dialog_quantity;
+
+    //Scoop::restock(quantity);
 }
