@@ -143,9 +143,13 @@ Mainwin::Mainwin() {
     reportmenu->append(*menuitem_custrep);
 
     // Append customer report to the Report menu
-    Gtk::MenuItem *menuitem_servrep = Gtk::manage(new Gtk::MenuItem("Customers", true));
+    Gtk::MenuItem *menuitem_servrep = Gtk::manage(new Gtk::MenuItem("Servers", true));
     menuitem_servrep->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_servre_click));
     reportmenu->append(*menuitem_servrep);
+
+    Gtk::MenuItem *menuitem_ordrep = Gtk::manage(new Gtk::MenuItem("Orders", true));
+    menuitem_ordrep->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_ordrep_click));
+    reportmenu->append(*menuitem_ordrep);
 
     //     H E L P
     // Create a Help menu and add to the menu bar

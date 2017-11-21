@@ -43,3 +43,17 @@ void Mainwin::on_servre_click(){
   dialog.run();
   dialog.close();
 }
+
+
+void Mainwin::on_ordrep_click(){
+  std::stringstream od;
+  for(int i=0; i<_orders.size(); i++){
+    if(_orders[i].state()== Mice::Order_state::Unfilled){
+      od<<"Order "<<_orders[i].id()<<"\n"<<_orders[i]<<std::endl;
+    }
+  }
+    Gtk::MessageDialog dialog{*this, "Order report:"};
+    dialog.set_secondary_text(od.str(), true);
+    dialog.run();
+    dialog.close();
+  }
