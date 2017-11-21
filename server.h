@@ -10,8 +10,8 @@ namespace Mice {
         bool fill_order_and_pay();     // True if server was paid for this order
         bool restock_and_pay();        // True if server was paid for this restock
         double pay_server();           // Returns server's salary for this paycheck
-        int num_orders();              // Returns number of orders filled by this server
-        double salary();                  // Returns salary of this server per hour
+        int num_orders() const;        // Returns number of orders filled by this server
+        double salary() const;         // Returns salary of this server per hour
         void set_salary(double s);     // Set new salary for server
         static const int PAY_PERIOD = 10; // Number of orders between paychecks
         static const int RESTOCK_PAY = 2; // Equivalent number of orders per restock
@@ -20,5 +20,7 @@ namespace Mice {
         double _salary;
     };
 }
+
+std::ostream& operator<<(std::ostream& os, const Mice::Server& server);
 
 #endif

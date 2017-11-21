@@ -48,6 +48,7 @@ class Mainwin : public Gtk::Window
         Gtk::MenuItem *menuitem_server;
         Gtk::MenuItem *menuitem_profit;
         Gtk::MenuItem *menuitem_custrep;
+        Gtk::MenuItem *menuitem_servrep;
         Gtk::MenuItem *menuitem_view_images;
 
         Gtk::ToolButton *new_emporium_button;

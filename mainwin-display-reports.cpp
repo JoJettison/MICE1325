@@ -30,5 +30,16 @@ void Mainwin::on_cusre_click(){
   dialog.set_secondary_text(cu.str(), true);
   dialog.run();
   dialog.close();
+}
+void Mainwin::on_servre_click(){
+  std::stringstream su;
+    emporium.store_persons(_servers, _customers);
+  for(int i=0; i<_servers.size(); i++){
+    su<<_servers[i]<<std::endl;
+  }
 
+  Gtk::MessageDialog dialog{*this, "Server report:"};
+  dialog.set_secondary_text(su.str(), true);
+  dialog.run();
+  dialog.close();
 }
