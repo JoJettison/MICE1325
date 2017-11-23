@@ -102,7 +102,7 @@ Mainwin::Mainwin() {
 
     //         F I L L   O R D E R
     // (Server) “_Fill Order..."
-    Gtk::MenuItem *menuitem_fill_order = Gtk::manage(new Gtk::MenuItem("_Fill Order", true));
+    menuitem_fill_order = Gtk::manage(new Gtk::MenuItem("_Fill Order", true));
     menuitem_fill_order->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_fill_order_click));
     processmenu->append(*menuitem_fill_order);
 

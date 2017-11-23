@@ -1,7 +1,10 @@
 #include "mainwin.h"
 #include <exception>
 #include <stdexcept>
-
+#include <regex>
+#include <sstream>
+#include <iostream>
+#include <string>
 void Mainwin::on_create_server_click() {
     on_create_person_click("Server");
 }
@@ -16,7 +19,7 @@ void Mainwin::on_create_person_click(std::string role) {
 
     Gtk::Dialog dialog{"Create " + role, *this};
 
-    // Name 
+    // Name
     Gtk::HBox b_name;
 
     Gtk::Label l_name{"Name:"};
@@ -70,11 +73,16 @@ void Mainwin::on_create_person_click(std::string role) {
     dialog.add_button("Cancel", 0);
     dialog.add_button("OK", 1);
     dialog.show_all();
-
     double d_salary;
+
+    //REGEX
+    std::regex integer{"([0-9]+)"};
+    std::regex name{"([A-Z]|[a-z])+"};
     bool valid_data = false;
 
+
     while(!valid_data) {
+
         if (dialog.run() != 1) {
             dialog.close();
             return;
@@ -87,12 +95,24 @@ void Mainwin::on_create_person_click(std::string role) {
             e_name.set_text("*** name is required ***");
             valid_data = false;
         }
-
+        std::stringstream ckc(e_name.get_text());
+        //REGEX
+        if (std::regex_match(ckc.str(),name)) {
+        }else{
+        e_name.set_text("*** Name must be characters ***");
+        valid_data = false;
+        }
+          std::stringstream ck(e_id.get_text());
         if (e_id.get_text().length() == 0) {
             e_id.set_text("*** id is required ***");
             valid_data = false;
         }
-
+        //REGEX
+        if (std::regex_match(ck.str(),integer)) {
+        }else{
+        e_id.set_text("*** id must be digits ***");
+        valid_data = false;
+        }
         if (e_phone.get_text().length() == 0) {
             e_phone.set_text("*** phone is required ***");
             valid_data = false;
@@ -118,7 +138,7 @@ void Mainwin::on_create_person_click(std::string role) {
             }
         }
     }
-        
+
     // Instance person
     if (role == "Server") {
         Mice::Server s{e_name.get_text(), e_id.get_text(), e_phone.get_text(), d_salary};
@@ -127,6 +147,6 @@ void Mainwin::on_create_person_click(std::string role) {
         Mice::Customer c{e_name.get_text(), e_id.get_text(), e_phone.get_text()};
         _emp->add_customer(c);
     }
-    
+
     dialog.close();
 }

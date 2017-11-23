@@ -3,6 +3,12 @@
 #include <exception>
 #include <stdexcept>
 
+// template<Emporium T>
+//   void something(T t)
+//   {
+//
+//   }
+
 void Mainwin::on_file_open_click() {
     try {
         std::ifstream ifs{"emporium.emp", std::ifstream::in};
@@ -26,4 +32,3 @@ void Mainwin::on_file_save_click() {
         dialog.close();
     }
 }
-
