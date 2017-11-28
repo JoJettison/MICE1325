@@ -14,7 +14,8 @@ void Person::set_active(bool active) {_active = active;}
 }
 
 std::ostream& operator<<(std::ostream& os, const Mice::Person& person) {
-    os << std::setw(40) << person.name() << ": "
-       << std::setprecision(2) << std::fixed << person.id();
+    os << std::setw(40) << person.name() << ": ID:"
+       << std::setprecision(2) << std::fixed << person.id() << " Number: "
+       << std::fixed << person.phone();
     return os;
 }
