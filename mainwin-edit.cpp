@@ -100,25 +100,14 @@ void Mainwin::on_restock_items_click()
 
 void Mainwin::on_edit_flavor_click()
 {
+    const int WIDTH = 15;
     int flavor = select_scoop();
 
-    /*Gtk::Dialog dialog;
+    Gtk::Dialog dialog;
+
     dialog.set_title("Edit Flavor");
     dialog.set_transient_for(*this);
 
-    // Name 
-    Gtk::HBox b_name;
-
-    Gtk::Label l_name{"Name:"};
-    l_name.set_width_chars(WIDTH);
-    b_name.pack_start(l_name, Gtk::PACK_SHRINK);
-
-    Gtk::Entry e_name;
-    e_name.set_max_length(WIDTH*4);
-    b_name.pack_start(e_name, Gtk::PACK_SHRINK);
-    dialog.get_vbox()->pack_start(b_name, Gtk::PACK_SHRINK);
-
-    // TODO: Replace this with a Gtk::TextView inside a Gtk::ScrolledWindow
     // Description
     Gtk::HBox b_desc;
 
@@ -155,21 +144,6 @@ void Mainwin::on_edit_flavor_click()
     b_price.pack_start(e_price, Gtk::PACK_SHRINK);
     dialog.get_vbox()->pack_start(b_price, Gtk::PACK_SHRINK);
 
-    // Max Scoops (Container only)
-    Gtk::HBox b_max_scoops;
-
-    Gtk::Label l_max_scoops{"Max Scoops:"};
-    l_max_scoops.set_width_chars(WIDTH);
-    b_max_scoops.pack_start(l_max_scoops, Gtk::PACK_SHRINK);
-
-    Gtk::Entry e_max_scoops;
-    e_max_scoops.set_max_length(WIDTH*4);
-    b_max_scoops.pack_start(e_max_scoops, Gtk::PACK_SHRINK);
-    if (type == CONTAINER) {
-        dialog.get_vbox()->pack_start(b_max_scoops, Gtk::PACK_SHRINK);
-    }
-
-    // Show dialog
     dialog.add_button("Cancel", 0);
     dialog.add_button("OK", 1);
     dialog.show_all();
@@ -177,7 +151,31 @@ void Mainwin::on_edit_flavor_click()
     bool valid_data = false;
     double d_cost;
     double d_price;
-    int i_max_scoops; */   
+    int i_max_scoops;
+
+    while(!valid_data) {
+        if (dialog.run() != 1) {
+            dialog.close();
+            return;
+        }
+
+        // Data validation
+        valid_data = true;
+        try {
+            d_cost = std::stod(e_cost.get_text());
+        } catch(std::exception e) {
+            e_cost.set_text("*** invalid cost ***");
+            valid_data = false;
+        }
+        try {
+            d_price = std::stod(e_price.get_text());
+        } catch(std::exception e) {
+            e_price.set_text("*** invalid price ***");
+            valid_data = false;
+        }
+    }
+    
+    dialog.close();  
 }
 
 void Mainwin::on_edit_container_click()
