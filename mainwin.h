@@ -32,6 +32,9 @@ class Mainwin : public Gtk::Window {
         void on_server_click();                        // Select server role
         void on_customer_click();                      // Select customer role
         void on_restock_items_click();                 // Restock items
+        void on_edit_flavor_click();                   // Edit flavor
+        void on_edit_container_click();                // Edit container
+        void on_edit_topping_click();                  // Edit topping
         void on_profit_click();
 
         void on_cusre_click();
@@ -54,6 +57,9 @@ class Mainwin : public Gtk::Window {
         Gtk::MenuItem *menuitem_pay_for_order;
         Gtk::MenuItem *menuitem_cancel_order;
         Gtk::MenuItem *menuitem_restock_items;
+        Gtk::MenuItem *menuitem_edit_flavor;
+        Gtk::MenuItem *menuitem_edit_container;
+        Gtk::MenuItem *menuitem_edit_topping;
         Gtk::MenuItem *menuitem_profit;
         Gtk::MenuItem *menuitem_custrep;
         Gtk::MenuItem *menuitem_servrep;

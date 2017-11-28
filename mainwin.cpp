@@ -118,18 +118,36 @@ Mainwin::Mainwin() {
     menuitem_cancel_order->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_cancel_order_click));
     processmenu->append(*menuitem_cancel_order);
 
-    //     R E S T O C K
-    // Create a Restock menu and add to the menu bar
-    Gtk::MenuItem *menuitem_restock = Gtk::manage(new Gtk::MenuItem("_Restock", true));
-    menubar->append(*menuitem_restock);
-    Gtk::Menu *restockmenu = Gtk::manage(new Gtk::Menu());
-    menuitem_restock->set_submenu(*restockmenu);
+    //     E D I T
+    // Create a Edit menu and add to the menu bar
+    Gtk::MenuItem *menuitem_edit = Gtk::manage(new Gtk::MenuItem("_Edit", true));
+    menubar->append(*menuitem_edit);
+    Gtk::Menu *editmenu = Gtk::manage(new Gtk::Menu());
+    menuitem_edit->set_submenu(*editmenu);
 
     //           R E S T O C K   I T E M S
     // (Server) "_Restock Items..."
     Gtk::MenuItem *menuitem_restock_items = Gtk::manage(new Gtk::MenuItem("_Restock Items", true));
     menuitem_restock_items->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_restock_items_click));
-    restockmenu->append(*menuitem_restock_items);
+    editmenu->append(*menuitem_restock_items);
+
+    //           E D I T   F L A V O R
+    // Append Edit Flavor to the edit menu
+    Gtk::MenuItem *menuitem_edit_flavor = Gtk::manage(new Gtk::MenuItem("_Edit Flavor", true));
+    menuitem_edit_flavor->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_edit_flavor_click));
+    editmenu->append(*menuitem_edit_flavor);
+
+    //           E D I T   C O N T A I N E R
+    // Append Edit Container to the edit menu
+    Gtk::MenuItem *menuitem_edit_container = Gtk::manage(new Gtk::MenuItem("_Edit Container", true));
+    menuitem_edit_container->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_edit_container_click));
+    editmenu->append(*menuitem_edit_container);
+
+    //           E D I T   T O P P I N G
+    // Append Edit Topping to the edit menu
+    Gtk::MenuItem *menuitem_edit_topping = Gtk::manage(new Gtk::MenuItem("_Edit Topping", true));
+    menuitem_edit_topping->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_edit_topping_click));
+    editmenu->append(*menuitem_edit_topping);
 
     //     R O L E
     // Create a Role menu and add to the menu bar
