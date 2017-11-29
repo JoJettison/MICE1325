@@ -10,11 +10,39 @@
 //   }
 
 void Mainwin::on_file_open_click() {
+
+
+    const int WIDTH = 15;
+
+    Gtk::Dialog dialog;
+    dialog.set_title("Load Emporium");
+    dialog.set_transient_for(*this);
+
+    // Name 
+    Gtk::HBox b_file;
+
+    Gtk::Label l_file{"File Name:"};
+    l_file.set_width_chars(WIDTH);
+    b_file.pack_start(l_file, Gtk::PACK_SHRINK);
+
+    Gtk::Entry e_file;
+    e_file.set_max_length(WIDTH*4);
+    b_file.pack_start(e_file, Gtk::PACK_SHRINK);
+    dialog.get_vbox()->pack_start(b_file, Gtk::PACK_SHRINK);
+
+    dialog.add_button("Cancel", 0);
+    dialog.add_button("OK", 1);
+    dialog.show_all();
+
+    dialog.run();
+    dialog.close();
+
+
     try {
-        std::ifstream ifs{"emporium.emp", std::ifstream::in};
+        std::ifstream ifs{e_file.get_text(), std::ifstream::in};
         _emp = new Mice::Emporium{ifs};
     } catch (std::exception& e) {
-        Gtk::MessageDialog dialog{*this, "Unable to open emporium.emp"};
+        Gtk::MessageDialog dialog{*this, "Unable to open file"};
         dialog.set_secondary_text(e.what());
         dialog.run();
         dialog.close();
@@ -22,11 +50,37 @@ void Mainwin::on_file_open_click() {
 }
 
 void Mainwin::on_file_save_click() {
+    const int WIDTH = 15;
+
+    Gtk::Dialog dialog;
+    dialog.set_title("Save Emporium");
+    dialog.set_transient_for(*this);
+
+    // Name 
+    Gtk::HBox b_file;
+
+    Gtk::Label l_file{"File Name:"};
+    l_file.set_width_chars(WIDTH);
+    b_file.pack_start(l_file, Gtk::PACK_SHRINK);
+
+    Gtk::Entry e_file;
+    e_file.set_max_length(WIDTH*4);
+    b_file.pack_start(e_file, Gtk::PACK_SHRINK);
+    dialog.get_vbox()->pack_start(b_file, Gtk::PACK_SHRINK);
+
+    dialog.add_button("Cancel", 0);
+    dialog.add_button("OK", 1);
+    dialog.show_all();
+
+    dialog.run();
+    dialog.close();
+
+
     try {
-        std::ofstream ofs{"emporium.emp", std::ofstream::out};
+        std::ofstream ofs{e_file.get_text(), std::ofstream::out};
         _emp->save(ofs);
     } catch (std::exception& e) {
-        Gtk::MessageDialog dialog{*this, "Unable to save emporium.emp"};
+        Gtk::MessageDialog dialog{*this, "Unable to save file"};
         dialog.set_secondary_text(e.what());
         dialog.run();
         dialog.close();
