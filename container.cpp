@@ -14,7 +14,7 @@ Container::Container(std::istream& ist) {
     ist >> _max_scoops; ist.ignore();
     getline(ist, _description);
 }
-    
+
 void Container::save(std::ostream& ost) {
     ost << "#" << std::endl << "CONTAINER" << std::endl; // header
     ost << _name << std::endl;
@@ -26,4 +26,7 @@ void Container::save(std::ostream& ost) {
 }
 std::string Container::type() const {return "Container";}
 int Container::max_scoops() const {return _max_scoops;}
+void Container::emax_scoops(int edit){
+  _max_scoops =edit;
+}
 }

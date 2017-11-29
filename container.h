@@ -15,6 +15,7 @@ class Container : public Item {
     void save(std::ostream& ost);
     std::string type() const override;
     int max_scoops() const;
+    void emax_scoops(int edit);
   private:
     int _max_scoops;
 };
