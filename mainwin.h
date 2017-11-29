@@ -17,6 +17,7 @@ class Mainwin : public Gtk::Window {
         Mainwin();
         virtual ~Mainwin();
     protected:
+        void on_file_new_click();                      // Load Default emporium file
         void on_file_open_click();                     // Open an Emporium file
         void on_file_save_click();                     // Save an Emporium file
         void on_create_order_click();                  // Create a new order

@@ -2,6 +2,8 @@
 #include "emporium.h"
 #include <exception>
 #include <stdexcept>
+#include <regex>
+#include <sstream>
 
 // template<Emporium T>
 //   void something(T t)
@@ -51,6 +53,7 @@ void Mainwin::on_file_open_click() {
 
 void Mainwin::on_file_save_click() {
     const int WIDTH = 15;
+    std::regex verifile {"(cpp)+|(h)+"};
 
     Gtk::Dialog dialog;
     dialog.set_title("Save Emporium");
@@ -73,16 +76,38 @@ void Mainwin::on_file_save_click() {
     dialog.show_all();
 
     dialog.run();
+
     dialog.close();
 
 
     try {
+      std::stringstream ovp(e_file.get_text());
+
+      if(regex_match(ovp.str(),verifile)){
+        std::ofstream ofs{"emporium.emp", std::ofstream::out};
+      }else{
         std::ofstream ofs{e_file.get_text(), std::ofstream::out};
         _emp->save(ofs);
+      }
+
     } catch (std::exception& e) {
         Gtk::MessageDialog dialog{*this, "Unable to save "+e_file.get_text() };
         dialog.set_secondary_text(e.what());
         dialog.run();
         dialog.close();
     }
+}
+
+void Mainwin::on_file_new_click(){
+  try {
+      std::ifstream ifs{"default.emp", std::ifstream::in};
+      _emp = new Mice::Emporium{ifs};
+  } catch (std::exception& e) {
+      Gtk::MessageDialog dialog{*this, "Unable to open default.emp"};
+      dialog.set_secondary_text(e.what());
+      dialog.run();
+      dialog.close();
+  }
+
+
 }

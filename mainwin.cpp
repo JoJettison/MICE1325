@@ -33,7 +33,7 @@ Mainwin::Mainwin() {
     //         N E W   E M P O R I U M
     // (Owner) “Create a New Emporium” Append New to the File menu
     menuitem_new = Gtk::manage(new Gtk::MenuItem("_New Emporium", true));
-    // menuitem_new->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_file_new_click));
+     menuitem_new->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_file_new_click));
     filemenu->append(*menuitem_new);
 
     //         O P E N   E M P O R I U M

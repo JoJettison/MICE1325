@@ -49,7 +49,7 @@ void Mainwin::on_penord_click(){
       od<<"Order "<<_emp->order(i).id()<<"\n"<<_emp->order(i)<<std::endl;
     }
   }
-    Gtk::MessageDialog dialog{*this, "Pending Orders::"};
+    Gtk::MessageDialog dialog{*this, "Pending Orders:"};
     dialog.set_secondary_text(od.str(), true);
     dialog.run();
     dialog.close();
