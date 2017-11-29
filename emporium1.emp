@@ -1,0 +1,110 @@
+MICE
+0.1
+#
+EMPORIUM
+Default
+0
+2
+#
+CONTAINER
+Bowl
+0.3
+0.6
+0
+4
+Glass
+#
+SCOOP
+Mint Chocolate
+0.25
+0.75
+0
+Peppermint Bark incl
+#
+TOPPING
+Gummy Worms
+0.6
+1
+0
+0
+Assorted colors
+#
+ORDER
+2
+2
+#
+CUSTOMER
+Steven
+444658
+214-890-9957
+#
+SERVER
+Javert
+561613
+698-447-2135
+7.25
+0
+#
+SERVING
+#
+CONTAINER
+Bowl
+0.3
+0.6
+0
+4
+Glass
+#
+SCOOP
+Mint Chocolate
+0.25
+0.75
+0
+Peppermint Bark incl
+#
+SCOOP
+Mint Chocolate
+0.25
+0.75
+0
+Peppermint Bark incl
+#
+SCOOP
+Mint Chocolate
+0.25
+0.75
+0
+Peppermint Bark incl
+#
+SCOOP
+Mint Chocolate
+0.25
+0.75
+0
+Peppermint Bark incl
+#
+TOPPING
+Gummy Worms
+0.6
+1
+0
+0
+Assorted colors
+#
+END SERVING
+#
+END ORDER
+#
+SERVER
+Javert
+561613
+698-447-2135
+7.25
+0
+#
+CUSTOMER
+Steven
+444658
+214-890-9957
+#
+END EMPORIUM
