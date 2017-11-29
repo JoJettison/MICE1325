@@ -49,24 +49,24 @@ void Mainwin::on_restock_items_click()
     // Define Item
 
     Gtk::Dialog dialog;
-    if (type == CONTAINER) 
+    if (type == CONTAINER)
     {
     	dialog.set_title("Restock Container");
     	int container = select_container();
     }
-    else if (type == SCOOP) 
+    else if (type == SCOOP)
     {
     	dialog.set_title("Restock Flavor");
     	int flavor = select_scoop();
     }
-    else 
+    else
     {
     	dialog.set_title("Restock Topping");
     	int topping = select_topping();
     }
 
     dialog.set_transient_for(*this);
-    
+
     dialog.close();
 
     // /////////////////////////////
@@ -174,8 +174,11 @@ void Mainwin::on_edit_flavor_click()
             valid_data = false;
         }
     }
-    
-    dialog.close();  
+
+    dialog.close();
+    _emp->scoop(flavor).eprice(d_price);
+    _emp->scoop(flavor).edescription(e_desc.get_text());
+    _emp->scoop(flavor).ecost(d_cost);
 }
 
 void Mainwin::on_edit_container_click()

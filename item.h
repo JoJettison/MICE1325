@@ -14,8 +14,11 @@ class Item {
     virtual std::string type() const;
     std::string name() const;
     std::string description() const;
+    void edescription(std::string edit);
     double cost() const;
+    void ecost(double edit);
     double price() const;
+    void eprice(double edit);
     int quantity() const;
   protected:
     std::string _name;

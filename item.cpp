@@ -15,13 +15,22 @@ std::string Item::description() const {return _description;}
 double Item::cost() const {return _cost;}
 double Item::price() const {return _price;}
 int Item::quantity() const {return _quantity;}
+void Item::eprice(double edit){
+  _price= edit;
+}
+void Item::edescription(std::string edit){
+  _description= edit;
+}
+void Item::ecost(double edit){
+  _cost= edit;
+}
 // Gtk::Image photo() {return _photo;}
 }
 
 /*
 std::ostream& operator<<(std::ostream& os, const Mice::Item& item) {
-    os << item.name() << " (" << item.description() << ") cost: $" 
-       << std::setprecision(2) << std::fixed << item.cost() << ", price: $" << item.price() 
+    os << item.name() << " (" << item.description() << ") cost: $"
+       << std::setprecision(2) << std::fixed << item.cost() << ", price: $" << item.price()
        << ", quantity: " << item.quantity();
     return os;
 }
@@ -30,8 +39,7 @@ std::ostream& operator<<(std::ostream& os, const Mice::Item& item) {
 // POLYMORPHISM at item.name()
 // OPERATOR OVERLOADING for Item and its derived classes Container, Scoop, and Topping
 std::ostream& operator<<(std::ostream& os, const Mice::Item& item) {
-    os << std::setw(40) << item.type() + ": " + item.name() << " $" 
-       << std::setprecision(2) << std::fixed << item.price(); 
+    os << std::setw(40) << item.type() + ": " + item.name() << " $"
+       << std::setprecision(2) << std::fixed << item.price();
     return os;
 }
-
