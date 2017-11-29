@@ -209,10 +209,15 @@ Mainwin::Mainwin() {
         Gtk::MenuItem *menuitem_servrep = Gtk::manage(new Gtk::MenuItem("Servers", true));
         menuitem_servrep->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_servre_click));
         reportmenu->append(*menuitem_servrep);
-        // Append Order report to the report menu
-        Gtk::MenuItem *menuitem_ordrep = Gtk::manage(new Gtk::MenuItem("Orders", true));
-        menuitem_ordrep->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_ordrep_click));
-        reportmenu->append(*menuitem_ordrep);
+        // Append Pending Order report to the report menu
+        Gtk::MenuItem *menuitem_penord = Gtk::manage(new Gtk::MenuItem("Pending Orders", true));
+        menuitem_penord->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_penord_click));
+        reportmenu->append(*menuitem_penord);
+
+        // Append Pending Order report to the report menu
+        Gtk::MenuItem *menuitem_comord = Gtk::manage(new Gtk::MenuItem("Completed Orders", true));
+        menuitem_comord->signal_activate().connect(sigc::mem_fun(*this, &Mainwin::on_comord_click));
+        reportmenu->append(*menuitem_comord);
 
     //     H E L P
     // Create a Help menu and add to the menu bar

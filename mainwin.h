@@ -39,7 +39,8 @@ class Mainwin : public Gtk::Window {
 
         void on_cusre_click();
         void on_servre_click();
-        void on_ordrep_click();
+        void on_penord_click();
+        void on_comord_click();
         void on_about_click();                         // Display About dialog
         void on_quit_click();                          // Exit the program
         void on_easteregg_click();                     // TODO: For test only
@@ -63,7 +64,8 @@ class Mainwin : public Gtk::Window {
         Gtk::MenuItem *menuitem_profit;
         Gtk::MenuItem *menuitem_custrep;
         Gtk::MenuItem *menuitem_servrep;
-        Gtk::MenuItem *menuitem_ordrep;
+        Gtk::MenuItem *menuitem_penord;
+        Gtk::MenuItem *menuitem_comorder;
 
         Gtk::ToolButton *new_emporium_button;
         Gtk::ToolButton *create_order_button;

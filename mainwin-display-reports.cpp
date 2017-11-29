@@ -42,15 +42,28 @@ void Mainwin::on_servre_click(){
 }
 
 
-void Mainwin::on_ordrep_click(){
+void Mainwin::on_penord_click(){
   std::stringstream od;
   for(int i=0; i<_emp->num_orders(); i++){
     if(_emp->order(i).state()== Mice::Order_state::Unfilled||_emp->order(i).state()== Mice::Order_state::Filled){
       od<<"Order "<<_emp->order(i).id()<<"\n"<<_emp->order(i)<<std::endl;
     }
   }
-    Gtk::MessageDialog dialog{*this, "Order report:"};
+    Gtk::MessageDialog dialog{*this, "Pending Orders::"};
     dialog.set_secondary_text(od.str(), true);
     dialog.run();
     dialog.close();
   }
+
+  void Mainwin::on_comord_click(){
+    std::stringstream od;
+    for(int i=0; i<_emp->num_orders(); i++){
+      if(_emp->order(i).state()== Mice::Order_state::Paid){
+        od<<"Order "<<_emp->order(i).id()<<"\n"<<_emp->order(i)<<std::endl;
+      }
+    }
+      Gtk::MessageDialog dialog{*this, "Completed Orders:"};
+      dialog.set_secondary_text(od.str(), true);
+      dialog.run();
+      dialog.close();
+    }
