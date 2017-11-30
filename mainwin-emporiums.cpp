@@ -103,6 +103,11 @@ void Mainwin::on_file_new_click(){
   try {
       std::ifstream ifs{"default.emp", std::ifstream::in};
       _emp = new Mice::Emporium{ifs};
+
+      Gtk::MessageDialog dialog{*this, "Created New Emporium"};
+      dialog.run();
+      dialog.close();
+
   } catch (std::exception& e) {
       Gtk::MessageDialog dialog{*this, "Unable to open default.emp"};
       dialog.set_secondary_text(e.what());
