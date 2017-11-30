@@ -1,10 +1,11 @@
 #include "order.h"
 #include <iostream>
 #include <stdexcept>
+#include <iomanip>
 
 namespace Mice {
 
-    Order::Order(Customer customer, int order_number) 
+    Order::Order(Customer customer, int order_number)
         : _customer{customer}, _id{order_number}, _state{Order_state::Unfilled} { }
     Order::Order(std::istream& ist) {
         std::string header1, header2;
@@ -16,7 +17,7 @@ namespace Mice {
         _state = (state == 0) ? Order_state::Canceled :
                  (state == 1) ? Order_state::Unfilled :
                  (state == 2) ? Order_state::Filled : Order_state::Paid;
-        
+
         std::getline(ist, header1);
         std::getline(ist, header2);
         if (header1 != "#") throw std::runtime_error("missing # during Order's Customer input");
@@ -94,7 +95,11 @@ namespace Mice {
 // OPERATOR OVERLOADING for class Order
 std::ostream& operator<<(std::ostream& os, const Mice::Order& order) {
     std::string nlnl = "";
-    for (Mice::Serving s : order.servings()) {os << nlnl << s; nlnl = "\n\n";}
+    double total = 0;
+    for (Mice::Serving s : order.servings()) {
+        os << s << std::endl << std::endl;
+        total += s.price();
+    }
+    os << std::setw(40) << "Total: " << " $" << std::setprecision(2) << std::fixed << total;
     return os;
 }
-
