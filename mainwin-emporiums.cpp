@@ -83,8 +83,9 @@ void Mainwin::on_file_save_click() {
     try {
       std::stringstream ovp(e_file.get_text());
 
-      if(regex_match(ovp.str(),verifile)){
+      if(regex_search(ovp.str(),verifile)){
         std::ofstream ofs{"emporium.emp", std::ofstream::out};
+        _emp->save(ofs);
       }else{
         std::ofstream ofs{e_file.get_text(), std::ofstream::out};
         _emp->save(ofs);
