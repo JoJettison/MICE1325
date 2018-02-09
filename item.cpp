@@ -1,55 +1,45 @@
 #include "item.h"
 #include <iostream>
-#include <string>
-#include <vector>
-using namespace std;
+#include <iomanip>
 
-Item::Item (string Name, string Description, double wholesaleCost, double retailPrice, int RemainingStock):
-name{Name}, desc{Description}, wholeCost{wholesaleCost}, retPri{retailPrice}, remStock{RemainingStock} { }
+namespace Mice {
 
-string Item::type()
-{
-  return "Item";
+Item::Item(std::string name, std::string description, double cost, double price)
+     : _name{name}, _description{description}, _cost{cost}, _price{price}, _quantity{0} { }
+Item::Item() : _name{""}, _description{""}, _cost{0}, _price{0}, _quantity{0} { }
+std::string Item::type() const {return "Item";}
+void Item::restock(int quantity) {_quantity  = quantity;}
+void Item::consume(int quantity) {_quantity -= quantity;}
+std::string Item::name() const {return _name;}
+std::string Item::description() const {return _description;}
+double Item::cost() const {return _cost;}
+double Item::price() const {return _price;}
+int Item::quantity() const {return _quantity;}
+void Item::eprice(double edit){
+  _price= edit;
+}
+void Item::edescription(std::string edit){
+  _description= edit;
+}
+void Item::ecost(double edit){
+  _cost= edit;
+}
+// Gtk::Image photo() {return _photo;}
 }
 
-void Item::restock(int stock)
-{
-  remStock= stock;
+/*
+std::ostream& operator<<(std::ostream& os, const Mice::Item& item) {
+    os << item.name() << " (" << item.description() << ") cost: $"
+       << std::setprecision(2) << std::fixed << item.cost() << ", price: $" << item.price()
+       << ", quantity: " << item.quantity();
+    return os;
 }
+*/
 
-void Item::consume(int stock)
-{
-  remStock-= stock;
-}
-
-string Item::iname()
-{
-  return name;
-}
-
-string Item::description()
-{
- return desc;
-}
-
-double Item::cost()
-{
-  return wholeCost;
-}
-
-double Item::price()
-{
-  return retPri;
-}
-
-int Item::remainStock()
-{
-  return remStock;
-}
-
-void Item::to_string()
-{
-
-cout<<name <<", "<<desc<<" Cost to purchase: "<<"$"<<wholeCost<< " Sold for "<<"$"<<retPri<< " RemainingStock: "<<remStock<< " units"<<endl;
-
+// POLYMORPHISM at item.name()
+// OPERATOR OVERLOADING for Item and its derived classes Container, Scoop, and Topping
+std::ostream& operator<<(std::ostream& os, const Mice::Item& item) {
+    os << std::setw(40) << item.type() + ": " + item.name() << " $"
+       << std::setprecision(2) << std::fixed << item.price();
+    return os;
 }
